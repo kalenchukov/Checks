@@ -111,4 +111,50 @@ public final class Checks
 
 		return obj;
 	}
+
+	/**
+	 * Проверяет, не является ли объект {@code null} и имеет указанное количество символов.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param length количество символов.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IllegalArgumentException если {@code obj} является {@code null} или
+	 * не имеет указанного количества символов.
+	 */
+	@NotNull
+	public static <O extends CharSequence> O requireNotNullAndLength(@Nullable final O obj,
+																	 final int length)
+	{
+		return Checks.requireNotNullAndLength(obj, length, "");
+	}
+
+	/**
+	 * Проверяет, не является ли объект {@code null} и имеет указанное количество символов.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param length количество символов.
+	 * @param message сообщение вызываемого исключения.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IllegalArgumentException если {@code obj} является {@code null} или
+	 * не имеет указанного количества символов.
+	 */
+	@NotNull
+	public static <O extends CharSequence> O requireNotNullAndLength(@Nullable final O obj,
+																	 final int length,
+																	 @Nullable final String message)
+	{
+		if (obj == null) {
+			throw new NullPointerException(message);
+		}
+
+		if (obj.length() != length) {
+			throw new IllegalArgumentException(message);
+		}
+
+		return obj;
+	}
 }

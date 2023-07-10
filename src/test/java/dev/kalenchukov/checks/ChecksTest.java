@@ -58,11 +58,11 @@ public class ChecksTest
 			@Test
 			public void requireNotNull()
 			{
-				String object = "Текст";
+				String expectedObject = "Текст";
 
-				String actualObject = Checks.requireNotNull(object);
+				String actualObject = Checks.requireNotNull(expectedObject);
 
-				assertThat(actualObject).isEqualTo(object);
+				assertThat(actualObject).isSameAs(expectedObject);
 			}
 
 			/**
@@ -102,11 +102,11 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndNotEmpty()
 			{
-				String object = "Текст";
+				String expectedObject = "Текст";
 
-				String actualObject = Checks.requireNotNullAndNotEmpty(object);
+				String actualObject = Checks.requireNotNullAndNotEmpty(expectedObject);
 
-				assertThat(actualObject).isEqualTo(object);
+				assertThat(actualObject).isSameAs(expectedObject);
 			}
 
 			/**
@@ -141,6 +141,65 @@ public class ChecksTest
 			{
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
 					Checks.requireNotNullAndNotEmpty(null, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
+
+		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndLength(CharSequence, int)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndLength
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)}.
+			 */
+			@Test
+			public void requireNotNullAndLength()
+			{
+				String expectedObject = "Текст";
+
+				String actualObject = Checks.requireNotNullAndLength(expectedObject, 5);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)} с некорректным значением
+			 * из {@code null} в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndLengthWithNull()
+			{
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndLength(null, 5);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)} с некорректным значением
+			 * из пустоты в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndLengthWithEmpty()
+			{
+				String object = "";
+
+				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndLength(object, 5);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int, String)} с сообщением.
+			 */
+			@Test
+			public void requireNotNullAndLengthWithMessage()
+			{
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndLength(null, 5, "Сообщение");
 				}).withMessage("Сообщение");
 			}
 		}
