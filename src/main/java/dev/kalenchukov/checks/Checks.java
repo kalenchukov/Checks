@@ -115,6 +115,46 @@ public final class Checks
 	}
 
 	/**
+	 * Проверяет, не является ли объект {@code null} и пустой коллекцией.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустой коллекцией.
+	 */
+	@NotNull
+	public static <O extends Collection<?>> O requireNotNullAndNotEmpty(@Nullable final O obj)
+	{
+		return Checks.requireNotNullAndNotEmpty(obj, "");
+	}
+
+	/**
+	 * Проверяет, не является ли объект {@code null} и пустой коллекцией.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param message сообщение вызываемого исключения.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустой коллекцией.
+	 */
+	@NotNull
+	public static <O extends Collection<?>> O requireNotNullAndNotEmpty(@Nullable final O obj,
+																		@Nullable final String message)
+	{
+		if (obj == null) {
+			throw new NullPointerException(message);
+		}
+
+		if (obj.isEmpty()) {
+			throw new IllegalArgumentException(message);
+		}
+
+		return obj;
+	}
+
+	/**
 	 * Проверяет, не является ли объект {@code null} и имеет указанное количество символов.
 	 *
 	 * @param obj проверяемый объект.

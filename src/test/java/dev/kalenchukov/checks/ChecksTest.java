@@ -26,6 +26,11 @@ package dev.kalenchukov.checks;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Null;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -67,7 +72,8 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNull(Object)} с некорректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#requireNotNull(Object)} с некорректным значением
+			 * из {@code null}.
 			 */
 			@Test
 			public void requireNotNullWithNull()
@@ -80,7 +86,8 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNull(Object, String)}.
+			 * Проверка метода {@link Checks#requireNotNull(Object, String)} с сообщением
+			 * для исключения.
 			 */
 			@Test
 			public void requireNotNullWithMessage()
@@ -99,7 +106,7 @@ public class ChecksTest
 		 * @author Алексей Каленчуков
 		 */
 		@Nested
-		public class RequireNotNullAndNotEmpty
+		public class RequireNotNullAndNotEmptyWithCharSequence
 		{
 			/**
 			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)}.
@@ -117,7 +124,7 @@ public class ChecksTest
 
 			/**
 			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)} с некорректным значением
-			 * из {@code null} в первом параметре.
+			 * из {@code null}.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithNull()
@@ -131,7 +138,7 @@ public class ChecksTest
 
 			/**
 			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)} с некорректным значением
-			 * из пустоты в первом параметре.
+			 * из пустой строки.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithEmpty()
@@ -144,12 +151,78 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence, String)} с сообщением.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence, String)} с сообщением
+			 * для исключения.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithMessage()
 			{
 				String object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndNotEmpty(object, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
+
+		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndNotEmpty(Collection)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndNotEmptyWithCollection
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)}.
+			 */
+			@Test
+			public void requireNotNullAndNotEmpty()
+			{
+				Collection<String> object = List.of("Текст");
+				Collection<String> expectedObject = List.of("Текст");
+
+				Collection<String> actualObject = Checks.requireNotNullAndNotEmpty(object);
+
+				assertThat(actualObject).containsSequence(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)} с некорректным значением
+			 * из {@code null}.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithNull()
+			{
+				Collection<String> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndNotEmpty(object);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)} с некорректным значением
+			 * из пустой коллекции.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithEmpty()
+			{
+				Collection<String> object = List.of();
+
+				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndNotEmpty(object);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection, String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithMessage()
+			{
+				Collection<String> object = null;
 
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
 					Checks.requireNotNullAndNotEmpty(object, "Сообщение");
@@ -195,7 +268,7 @@ public class ChecksTest
 
 			/**
 			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)} с некорректным значением
-			 * из пустоты в первом параметре.
+			 * из пустой строки в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndLengthWithEmpty()
@@ -208,7 +281,8 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int, String)} с сообщением.
+			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int, String)} с сообщением
+			 * для исключения.
 			 */
 			@Test
 			public void requireNotNullAndLengthWithMessage()

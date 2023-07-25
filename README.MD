@@ -20,6 +20,7 @@ Checks.requireNotNull(myObject);
 #### Проверка объекта на ```null``` и пустое значение
 Поддерживаемые типы:
 * CharSequence
+* Collection
 
 ```java
 Checks.requireNotNullAndNotEmpty(myObject);
