@@ -58,9 +58,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNull()
 			{
+				String object = "Текст";
 				String expectedObject = "Текст";
 
-				String actualObject = Checks.requireNotNull(expectedObject);
+				String actualObject = Checks.requireNotNull(object);
 
 				assertThat(actualObject).isSameAs(expectedObject);
 			}
@@ -71,8 +72,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNullWithNull()
 			{
+				String object = null;
+
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNull(null);
+					Checks.requireNotNull(object);
 				});
 			}
 
@@ -82,8 +85,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNullWithMessage()
 			{
+				String object = null;
+
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNull(null, "Сообщение");
+					Checks.requireNotNull(object, "Сообщение");
 				}).withMessage("Сообщение");
 			}
 		}
@@ -102,9 +107,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndNotEmpty()
 			{
+				String object = "Текст";
 				String expectedObject = "Текст";
 
-				String actualObject = Checks.requireNotNullAndNotEmpty(expectedObject);
+				String actualObject = Checks.requireNotNullAndNotEmpty(object);
 
 				assertThat(actualObject).isSameAs(expectedObject);
 			}
@@ -116,8 +122,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndNotEmptyWithNull()
 			{
+				String object = null;
+
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(null);
+					Checks.requireNotNullAndNotEmpty(object);
 				});
 			}
 
@@ -128,8 +136,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndNotEmptyWithEmpty()
 			{
+				String object = "";
+
 				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty("");
+					Checks.requireNotNullAndNotEmpty(object);
 				});
 			}
 
@@ -139,8 +149,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndNotEmptyWithMessage()
 			{
+				String object = null;
+
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(null, "Сообщение");
+					Checks.requireNotNullAndNotEmpty(object, "Сообщение");
 				}).withMessage("Сообщение");
 			}
 		}
@@ -159,9 +171,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndLength()
 			{
+				String object = "Текст";
 				String expectedObject = "Текст";
 
-				String actualObject = Checks.requireNotNullAndLength(expectedObject, 5);
+				String actualObject = Checks.requireNotNullAndLength(object, 5);
 
 				assertThat(actualObject).isSameAs(expectedObject);
 			}
@@ -173,8 +186,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndLengthWithNull()
 			{
+				String object = null;
+
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLength(null, 5);
+					Checks.requireNotNullAndLength(object, 5);
 				});
 			}
 
@@ -198,8 +213,10 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndLengthWithMessage()
 			{
+				String object = null;
+
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLength(null, 5, "Сообщение");
+					Checks.requireNotNullAndLength(object, 5, "Сообщение");
 				}).withMessage("Сообщение");
 			}
 		}

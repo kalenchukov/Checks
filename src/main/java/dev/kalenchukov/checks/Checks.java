@@ -27,6 +27,8 @@ package dev.kalenchukov.checks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
+
 /**
  * Класс проверки объектов по заданным критериям.
  *
