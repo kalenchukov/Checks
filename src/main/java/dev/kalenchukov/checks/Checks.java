@@ -199,4 +199,50 @@ public final class Checks
 
 		return obj;
 	}
+
+	/**
+	 * Проверяет, не является ли объект {@code null} и имеет указанное количество элементов.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param size количество элементов.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
+	 * не имеет указанного количества элементов.
+	 */
+	@NotNull
+	public static <O extends Collection<?>> O requireNotNullAndSize(@Nullable final O obj,
+																	final int size)
+	{
+		return Checks.requireNotNullAndSize(obj, size, "");
+	}
+
+	/**
+	 * Проверяет, не является ли объект {@code null} и имеет указанное количество элементов.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param size количество элементов.
+	 * @param message сообщение вызываемого исключения.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
+	 * не имеет указанного количества элементов.
+	 */
+	@NotNull
+	public static <O extends Collection<?>> O requireNotNullAndSize(@Nullable final O obj,
+																	final int size,
+																	@Nullable final String message)
+	{
+		if (obj == null) {
+			throw new NullPointerException(message);
+		}
+
+		if (obj.size() != size) {
+			throw new IndexOutOfBoundsException(message);
+		}
+
+		return obj;
+	}
 }

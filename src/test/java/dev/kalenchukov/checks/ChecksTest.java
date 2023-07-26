@@ -294,5 +294,70 @@ public class ChecksTest
 				}).withMessage("Сообщение");
 			}
 		}
+
+		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndSize(Collection, int)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndSize
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)}.
+			 */
+			@Test
+			public void requireNotNullAndSize()
+			{
+				Collection<Integer> object = List.of(1, 2, 3);
+				Collection<Integer> expectedObject = List.of(1, 2, 3);
+
+				Collection<Integer> actualObject = Checks.requireNotNullAndSize(object, 3);
+
+				assertThat(actualObject).containsSequence(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)} с некорректным значением
+			 * из {@code null} в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithNull()
+			{
+				Collection<Integer> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSize(object, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)} с некорректным значением
+			 * из пустой коллекции в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithEmpty()
+			{
+				Collection<Integer> object = List.of();
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSize(object, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int, String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithMessage()
+			{
+				Collection<Integer> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSize(object, 3, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
 	}
 }
