@@ -202,6 +202,56 @@ public final class Checks
 	}
 
 	/**
+	 * Проверяет, не является ли объект {@code null} и имеет количество символов из диапазона.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param fromLength нижняя граница диапазона количества символов.
+	 * @param toLength верхняя граница диапазона количества символов.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
+	 * не имеет количества символов из диапазона.
+	 */
+	@NotNull
+	public static <O extends CharSequence> O requireNotNullAndLengthRange(@Nullable final O obj,
+																		  final int fromLength,
+																		  final int toLength)
+	{
+		return Checks.requireNotNullAndLengthRange(obj, fromLength, toLength, "");
+	}
+
+	/**
+	 * Проверяет, не является ли объект {@code null} и имеет количество символов из диапазона.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param fromLength нижняя граница диапазона количества символов.
+	 * @param toLength верхняя граница диапазона количества символов.
+	 * @param message сообщение вызываемого исключения.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
+	 * не имеет количества символов из диапазона.
+	 */
+	@NotNull
+	public static <O extends CharSequence> O requireNotNullAndLengthRange(@Nullable final O obj,
+																		  final int fromLength,
+																		  final int toLength,
+																		  @Nullable final String message)
+	{
+		if (obj == null) {
+			throw new NullPointerException(message);
+		}
+
+		if (obj.length() < fromLength || obj.length() > toLength) {
+			throw new IndexOutOfBoundsException(message);
+		}
+
+		return obj;
+	}
+
+	/**
 	 * Проверяет, не является ли объект {@code null} и имеет указанное количество элементов.
 	 *
 	 * @param obj проверяемый объект.
@@ -248,7 +298,7 @@ public final class Checks
 	}
 
 	/**
-	 * Проверяет, не является ли объект {@code null} и имеет указанное количество элементов из диапазона.
+	 * Проверяет, не является ли объект {@code null} и имеет количество элементов из диапазона.
 	 *
 	 * @param obj проверяемый объект.
 	 * @param fromSize нижняя граница диапазона количества элементов.
@@ -257,7 +307,7 @@ public final class Checks
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
 	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет указанного количества элементов из диапазона.
+	 * не имеет количества элементов из диапазона.
 	 */
 	@NotNull
 	public static <O extends Collection<?>> O requireNotNullAndSizeRange(@Nullable final O obj,
@@ -268,7 +318,7 @@ public final class Checks
 	}
 
 	/**
-	 * Проверяет, не является ли объект {@code null} и имеет указанное количество элементов из диапазона.
+	 * Проверяет, не является ли объект {@code null} и имеет количество элементов из диапазона.
 	 *
 	 * @param obj проверяемый объект.
 	 * @param fromSize нижняя граница диапазона количества элементов.
@@ -278,7 +328,7 @@ public final class Checks
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
 	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет указанного количества элементов из диапазона.
+	 * не имеет количества элементов из диапазона.
 	 */
 	@NotNull
 	public static <O extends Collection<?>> O requireNotNullAndSizeRange(@Nullable final O obj,

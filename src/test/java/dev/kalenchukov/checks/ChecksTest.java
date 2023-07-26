@@ -372,7 +372,7 @@ public class ChecksTest
 			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)}.
 			 */
 			@Test
-			public void requireNotNullAndSize()
+			public void requireNotNullAndSizeRange()
 			{
 				Collection<Integer> object = List.of(1, 2, 3);
 				Collection<Integer> expectedObject = List.of(1, 2, 3);
@@ -387,7 +387,7 @@ public class ChecksTest
 			 * из {@code null} в первом параметре.
 			 */
 			@Test
-			public void requireNotNullAndSizeWithNull()
+			public void requireNotNullAndSizeRangeWithNull()
 			{
 				Collection<Integer> object = null;
 
@@ -401,7 +401,7 @@ public class ChecksTest
 			 * из пустой коллекции в первом параметре.
 			 */
 			@Test
-			public void requireNotNullAndSizeWithEmpty()
+			public void requireNotNullAndSizeRangeWithEmpty()
 			{
 				Collection<Integer> object = List.of();
 
@@ -412,10 +412,10 @@ public class ChecksTest
 
 			/**
 			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
-			 * в виде превышения нижней границы.
+			 * в виде нарушения нижней границы.
 			 */
 			@Test
-			public void requireNotNullAndSizeWithInvalidFrom()
+			public void requireNotNullAndSizeRangeWithInvalidFrom()
 			{
 				Collection<Integer> object = List.of(1);
 
@@ -426,10 +426,10 @@ public class ChecksTest
 
 			/**
 			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
-			 * в виде превышения верхней границы.
+			 * в виде нарушения верхней границы.
 			 */
 			@Test
-			public void requireNotNullAndSizeWithInvalidTo()
+			public void requireNotNullAndSizeRangeWithInvalidTo()
 			{
 				Collection<Integer> object = List.of(1, 2, 3, 4);
 
@@ -443,12 +443,105 @@ public class ChecksTest
 			 * для исключения.
 			 */
 			@Test
-			public void requireNotNullAndSizeWithMessage()
+			public void requireNotNullAndSizeRangeWithMessage()
 			{
 				Collection<Integer> object = null;
 
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
 					Checks.requireNotNullAndSizeRange(object, 1, 3, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
+
+		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndLengthRange
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)}.
+			 */
+			@Test
+			public void requireNotNullAndLengthRange()
+			{
+				String object = "Текст";
+				String expectedObject = "Текст";
+
+				String actualObject = Checks.requireNotNullAndLengthRange(object, 1, 5);
+
+				assertThat(actualObject).containsSequence(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с некорректным значением
+			 * из {@code null} в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndLengthWithNull()
+			{
+				String object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndLengthRange(object, 1, 5);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с некорректным значением
+			 * из пустой строки в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndLengthWithEmpty()
+			{
+				String object = "";
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndLengthRange(object, 1, 5);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с некорректным значением
+			 * в виде нарушения нижней границы.
+			 */
+			@Test
+			public void requireNotNullAndLengthWithInvalidFrom()
+			{
+				String object = "Т";
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndLengthRange(object, 2, 5);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с некорректным значением
+			 * в виде нарушения верхней границы.
+			 */
+			@Test
+			public void requireNotNullAndLengthWithInvalidTo()
+			{
+				String object = "Тексты";
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndLengthRange(object, 2, 5);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int, String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndLengthWithMessage()
+			{
+				String object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndLengthRange(object, 1, 5, "Сообщение");
 				}).withMessage("Сообщение");
 			}
 		}
