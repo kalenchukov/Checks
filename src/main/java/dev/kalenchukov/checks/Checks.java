@@ -28,6 +28,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
+import java.util.Objects;
 
 /**
  * Класс проверки объектов по заданным критериям.
@@ -240,6 +241,56 @@ public final class Checks
 		}
 
 		if (obj.size() != size) {
+			throw new IndexOutOfBoundsException(message);
+		}
+
+		return obj;
+	}
+
+	/**
+	 * Проверяет, не является ли объект {@code null} и имеет указанное количество элементов из диапазона.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param fromSize нижняя граница диапазона количества элементов.
+	 * @param toSize верхняя граница диапазона количества элементов.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
+	 * не имеет указанного количества элементов из диапазона.
+	 */
+	@NotNull
+	public static <O extends Collection<?>> O requireNotNullAndSizeRange(@Nullable final O obj,
+																		 final int fromSize,
+																		 final int toSize)
+	{
+		return Checks.requireNotNullAndSizeRange(obj, fromSize, toSize, "");
+	}
+
+	/**
+	 * Проверяет, не является ли объект {@code null} и имеет указанное количество элементов из диапазона.
+	 *
+	 * @param obj проверяемый объект.
+	 * @param fromSize нижняя граница диапазона количества элементов.
+	 * @param toSize верхняя граница диапазона количества элементов.
+	 * @param message сообщение вызываемого исключения.
+	 * @param <O> тип проверяемого объекта.
+	 * @return проверяемый объект.
+	 * @throws NullPointerException если {@code obj} является {@code null}.
+	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
+	 * не имеет указанного количества элементов из диапазона.
+	 */
+	@NotNull
+	public static <O extends Collection<?>> O requireNotNullAndSizeRange(@Nullable final O obj,
+																		 final int fromSize,
+																		 final int toSize,
+																		 @Nullable final String message)
+	{
+		if (obj == null) {
+			throw new NullPointerException(message);
+		}
+
+		if (obj.size() < fromSize || obj.size() > toSize) {
 			throw new IndexOutOfBoundsException(message);
 		}
 

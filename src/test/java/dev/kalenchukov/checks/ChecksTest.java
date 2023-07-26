@@ -359,5 +359,98 @@ public class ChecksTest
 				}).withMessage("Сообщение");
 			}
 		}
+
+		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndSizeRange
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)}.
+			 */
+			@Test
+			public void requireNotNullAndSize()
+			{
+				Collection<Integer> object = List.of(1, 2, 3);
+				Collection<Integer> expectedObject = List.of(1, 2, 3);
+
+				Collection<Integer> actualObject = Checks.requireNotNullAndSizeRange(object, 1, 3);
+
+				assertThat(actualObject).containsSequence(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
+			 * из {@code null} в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithNull()
+			{
+				Collection<Integer> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 1, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
+			 * из пустой коллекции в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithEmpty()
+			{
+				Collection<Integer> object = List.of();
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 1, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
+			 * в виде превышения нижней границы.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithInvalidFrom()
+			{
+				Collection<Integer> object = List.of(1);
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 2, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
+			 * в виде превышения верхней границы.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithInvalidTo()
+			{
+				Collection<Integer> object = List.of(1, 2, 3, 4);
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 2, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int, String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithMessage()
+			{
+				Collection<Integer> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 1, 3, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
 	}
 }
