@@ -229,6 +229,86 @@ public class ChecksTest
 		}
 
 		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndNotEmpty(Object[])}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndNotEmptyWithArray
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])}.
+			 */
+			@Test
+			public void requireNotNullAndNotEmpty()
+			{
+				String[] object, expectedObject;
+				object = expectedObject = new String[]{"Текст"};
+
+				String[] actualObject = Checks.requireNotNullAndNotEmpty(object);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с некорректным значением
+			 * из {@code null}.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithNull()
+			{
+				String[] object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndNotEmpty(object);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с некорректным значением
+			 * из пустой коллекции.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithValueNull()
+			{
+				String[] object, expectedObject;
+				object = expectedObject = new String[]{"Текст", null, "Text"};
+
+				String[] actualObject = Checks.requireNotNullAndNotEmpty(object);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с некорректным значением
+			 * из пустой коллекции.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithEmpty()
+			{
+				String[] object = new String[]{};
+
+				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndNotEmpty(object);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[], String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithMessage()
+			{
+				String[] object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndNotEmpty(object, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
+
+		/**
 		 * Класс проверки метода {@link Checks#requireNotNullAndLength(CharSequence, int)}.
 		 *
 		 * @author Алексей Каленчуков
