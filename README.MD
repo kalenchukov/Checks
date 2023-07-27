@@ -60,6 +60,7 @@ Checks.requireNotNullAndSize(myObject, 5);
 #### Проверка объекта на ```null``` и вхождение в диапазон количества элементов
 Поддерживаемые типы:
 * Collection
+* Map
 
 ```java
 Checks.requireNotNullAndSizeRange(myObject, 1, 5);

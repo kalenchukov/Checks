@@ -28,9 +28,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.internal.matchers.Null;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -63,8 +61,8 @@ public class ChecksTest
 			@Test
 			public void requireNotNull()
 			{
-				String object = "Текст";
-				String expectedObject = "Текст";
+				String object, expectedObject;
+				object = expectedObject = "Текст";
 
 				String actualObject = Checks.requireNotNull(object);
 
@@ -114,8 +112,8 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndNotEmpty()
 			{
-				String object = "Текст";
-				String expectedObject = "Текст";
+				String object, expectedObject;
+				object = expectedObject = "Текст";
 
 				String actualObject = Checks.requireNotNullAndNotEmpty(object);
 
@@ -179,12 +177,12 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndNotEmpty()
 			{
-				Collection<String> object = List.of("Текст");
-				Collection<String> expectedObject = List.of("Текст");
+				Collection<String> object, expectedObject;
+				object = expectedObject = List.of("Текст");
 
 				Collection<String> actualObject = Checks.requireNotNullAndNotEmpty(object);
 
-				assertThat(actualObject).containsSequence(expectedObject);
+				assertThat(actualObject).isSameAs(expectedObject);
 			}
 
 			/**
@@ -244,8 +242,8 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndLength()
 			{
-				String object = "Текст";
-				String expectedObject = "Текст";
+				String object, expectedObject;
+				object = expectedObject = "Текст";
 
 				String actualObject = Checks.requireNotNullAndLength(object, 5);
 
@@ -309,12 +307,12 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndSize()
 			{
-				Collection<Integer> object = List.of(1, 2, 3);
-				Collection<Integer> expectedObject = List.of(1, 2, 3);
+				Collection<Integer> object, expectedObject;
+				object = expectedObject = List.of(1, 2, 3);
 
 				Collection<Integer> actualObject = Checks.requireNotNullAndSize(object, 3);
 
-				assertThat(actualObject).containsSequence(expectedObject);
+				assertThat(actualObject).isSameAs(expectedObject);
 			}
 
 			/**
@@ -366,7 +364,7 @@ public class ChecksTest
 		 * @author Алексей Каленчуков
 		 */
 		@Nested
-		public class RequireNotNullAndSizeRange
+		public class RequireNotNullAndSizeRangeWithCollection
 		{
 			/**
 			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)}.
@@ -374,12 +372,12 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndSizeRange()
 			{
-				Collection<Integer> object = List.of(1, 2, 3);
-				Collection<Integer> expectedObject = List.of(1, 2, 3);
+				Collection<Integer> object, expectedObject;
+				object = expectedObject = List.of(1, 2, 3);
 
 				Collection<Integer> actualObject = Checks.requireNotNullAndSizeRange(object, 1, 3);
 
-				assertThat(actualObject).containsSequence(expectedObject);
+				assertThat(actualObject).isSameAs(expectedObject);
 			}
 
 			/**
@@ -454,6 +452,107 @@ public class ChecksTest
 		}
 
 		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndSizeRangeWithMap
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)}.
+			 */
+			@Test
+			public void requireNotNullAndSizeRange()
+			{
+				Map<Integer, String> object, expectedObject;
+				object = expectedObject = Map.of(
+					1, "Один",
+					2, "Два",
+					3, "Три"
+				);
+
+				Map<Integer, String> actualObject = Checks.requireNotNullAndSizeRange(object, 1, 3);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с некорректным значением
+			 * из {@code null} в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithNull()
+			{
+				Map<Integer, String> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 1, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с некорректным значением
+			 * из пустой карты в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithEmpty()
+			{
+				Map<Integer, String> object = Map.of();
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 1, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с некорректным значением
+			 * в виде нарушения нижней границы.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithInvalidFrom()
+			{
+				Map<Integer, String> object = Map.of(1, "Один");
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 2, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с некорректным значением
+			 * в виде нарушения верхней границы.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithInvalidTo()
+			{
+				Map<Integer, String> object = Map.of(
+					1, "Один",
+					2, "Два",
+					3, "Три",
+					4, "Четыре"
+				);
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 2, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int, String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithMessage()
+			{
+				Map<Integer, String> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 1, 3, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
+
+		/**
 		 * Класс проверки метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)}.
 		 *
 		 * @author Алексей Каленчуков
@@ -467,12 +566,12 @@ public class ChecksTest
 			@Test
 			public void requireNotNullAndLengthRange()
 			{
-				String object = "Текст";
-				String expectedObject = "Текст";
+				String object, expectedObject;
+				object = expectedObject = "Текст";
 
 				String actualObject = Checks.requireNotNullAndLengthRange(object, 1, 5);
 
-				assertThat(actualObject).containsSequence(expectedObject);
+				assertThat(actualObject).isSameAs(expectedObject);
 			}
 
 			/**
