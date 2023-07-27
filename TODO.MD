@@ -1,14 +1,29 @@
 # Список задач
 ## Сделать
-* Проверку что число больше 0.
-* Проверку что число равно 0.
-* Проверку что число меньше 0.
-* Проверку что число входит в диапазон.
+* requireNotNullAndNotLength()
+
+* requireNotNullAndNotLengthRange()
+
+* requireNotNullAndNotSize()
+
+* requireNotNullAndNotSizeRange()
+
+* requireNotNullAndNotZero()
+
+* requireNotNullAndNotPositive()
+* requireNotNullAndNotNegative()
+
+* requireNotNullAndNotPositiveAndNotZero()
+* requireNotNullAndNotNegativeAndNotZero()
+
+* requireNotNullAndRange()
+* requireNotNullAndNotRange()
+
+* requireNotNullAndContainsNull()
+* requireNotNullAndNotContainsNull()
 
 ## Можно сделать
-* Проверку что массив или Collection не содержит null значений.
-* Проверку что Map не содержит null ключей.
-* Проверку что число не 0.
+* Методы для типов BigInteger и BigDecimal.
 
 ## Не делать
-* 
+* Методы для примитивных чисел.
