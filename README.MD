@@ -36,7 +36,7 @@ Checks.requireNotNullAndNotEmpty(myObject);
 * CharSequence
 
 ```java
-Checks.requireNotNullAndLength(myObject);
+Checks.requireNotNullAndLength(myObject, 5);
 ```
 
 Результат выполнения:
@@ -49,7 +49,7 @@ Checks.requireNotNullAndLength(myObject);
 * Collection
 
 ```java
-Checks.requireNotNullAndSize(myObject);
+Checks.requireNotNullAndSize(myObject, 5);
 ```
 
 Результат выполнения:
@@ -62,7 +62,7 @@ Checks.requireNotNullAndSize(myObject);
 * Collection
 
 ```java
-Checks.requireNotNullAndSizeRange(myObject);
+Checks.requireNotNullAndSizeRange(myObject, 1, 5);
 ```
 
 Результат выполнения:
@@ -75,7 +75,7 @@ Checks.requireNotNullAndSizeRange(myObject);
 * CharSequence
 
 ```java
-Checks.requireNotNullAndLengthRange(myObject);
+Checks.requireNotNullAndLengthRange(myObject, 1, 5);
 ```
 
 Результат выполнения:
