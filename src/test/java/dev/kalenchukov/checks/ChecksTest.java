@@ -26,7 +26,6 @@ package dev.kalenchukov.checks;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Null;
 
 import java.util.*;
 
@@ -243,7 +242,21 @@ public class ChecksTest
 			public void requireNotNullAndNotEmpty()
 			{
 				String[] object, expectedObject;
-				object = expectedObject = new String[]{"Текст"};
+				object = expectedObject = new String[] {"Текст"};
+
+				String[] actualObject = Checks.requireNotNullAndNotEmpty(object);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с наличием {@code null} значений.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithValueNull()
+			{
+				String[] object, expectedObject;
+				object = expectedObject = new String[] {"Текст", null, "Text"};
 
 				String[] actualObject = Checks.requireNotNullAndNotEmpty(object);
 
@@ -266,27 +279,12 @@ public class ChecksTest
 
 			/**
 			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с некорректным значением
-			 * из пустой коллекции.
-			 */
-			@Test
-			public void requireNotNullAndNotEmptyWithValueNull()
-			{
-				String[] object, expectedObject;
-				object = expectedObject = new String[]{"Текст", null, "Text"};
-
-				String[] actualObject = Checks.requireNotNullAndNotEmpty(object);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с некорректным значением
-			 * из пустой коллекции.
+			 * из пустого массива.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithEmpty()
 			{
-				String[] object = new String[]{};
+				String[] object = new String[] {};
 
 				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
 					Checks.requireNotNullAndNotEmpty(object);
@@ -379,7 +377,7 @@ public class ChecksTest
 		 * @author Алексей Каленчуков
 		 */
 		@Nested
-		public class RequireNotNullAndSize
+		public class RequireNotNullAndSizeWithCollection
 		{
 			/**
 			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)}.
@@ -431,6 +429,85 @@ public class ChecksTest
 			public void requireNotNullAndSizeWithMessage()
 			{
 				Collection<Integer> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSize(object, 3, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
+
+		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndSize(Object[], int)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndSizeWithArray
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)}.
+			 */
+			@Test
+			public void requireNotNullAndSize()
+			{
+				Integer[] object, expectedObject;
+				object = expectedObject = new Integer[] {1, 2, 3};
+
+				Integer[] actualObject = Checks.requireNotNullAndSize(object, 3);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с наличием {@code null} значений.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithValueNull()
+			{
+				Integer[] object, expectedObject;
+				object = expectedObject = new Integer[] {1, null, 3};
+
+				Integer[] actualObject = Checks.requireNotNullAndSize(object, 3);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с некорректным значением
+			 * из {@code null} в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithNull()
+			{
+				Integer[] object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSize(object, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с некорректным значением
+			 * из пустого массива в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithEmpty()
+			{
+				Integer[] object = new Integer[] {};
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSize(object, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int, String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithMessage()
+			{
+				Integer[] object = null;
 
 				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
 					Checks.requireNotNullAndSize(object, 3, "Сообщение");
