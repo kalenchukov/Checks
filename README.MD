@@ -63,6 +63,7 @@ Checks.requireNotNullAndSize(myObject, 5);
 Поддерживаемые типы:
 * Collection
 * Map
+* Array
 
 ```java
 Checks.requireNotNullAndSizeRange(myObject, 1, 5);

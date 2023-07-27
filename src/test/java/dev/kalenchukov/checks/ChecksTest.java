@@ -609,6 +609,99 @@ public class ChecksTest
 		}
 
 		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndSizeRangeWithArray
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)}.
+			 */
+			@Test
+			public void requireNotNullAndSizeRange()
+			{
+				Integer[] object, expectedObject;
+				object = expectedObject = new Integer[] {1, 2, 3};
+
+				Integer[] actualObject = Checks.requireNotNullAndSizeRange(object, 1, 3);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с некорректным значением
+			 * из {@code null} в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithNull()
+			{
+				Integer[] object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 1, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с некорректным значением
+			 * из пустой массива в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithEmpty()
+			{
+				Integer[] object = new Integer[] {};
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 1, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с некорректным значением
+			 * в виде нарушения нижней границы.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithInvalidFrom()
+			{
+				Integer[] object = new Integer[] {1};
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 2, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с некорректным значением
+			 * в виде нарушения верхней границы.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithInvalidTo()
+			{
+				Integer[] object = new Integer[] {1, 2, 3, 4};
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 2, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int, String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndSizeRangeWithMessage()
+			{
+				Integer[] object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSizeRange(object, 1, 3, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
+
+		/**
 		 * Класс проверки метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)}.
 		 *
 		 * @author Алексей Каленчуков
