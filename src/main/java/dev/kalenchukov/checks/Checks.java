@@ -104,9 +104,7 @@ public final class Checks
 	public static <O extends CharSequence> O requireNotNullAndNotEmpty(@Nullable final O obj,
 																	   @Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.isEmpty()) {
 			throw new IllegalArgumentException(message);
@@ -144,9 +142,7 @@ public final class Checks
 	public static <O> O @NotNull [] requireNotNullAndNotEmpty(@Nullable final O @Nullable [] obj,
 															  @Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.length == 0) {
 			throw new IllegalArgumentException(message);
@@ -184,9 +180,7 @@ public final class Checks
 	public static <O extends Collection<?>> O requireNotNullAndNotEmpty(@Nullable final O obj,
 																		@Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.isEmpty()) {
 			throw new IllegalArgumentException(message);
@@ -224,9 +218,7 @@ public final class Checks
 	public static <O extends Map<?, ?>> O requireNotNullAndNotEmpty(@Nullable final O obj,
 																	@Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.isEmpty()) {
 			throw new IllegalArgumentException(message);
@@ -270,9 +262,7 @@ public final class Checks
 																	 final int length,
 																	 @Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.length() != length) {
 			throw new IllegalArgumentException(message);
@@ -320,9 +310,7 @@ public final class Checks
 																		  final int toLength,
 																		  @Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.length() < fromLength || obj.length() > toLength) {
 			throw new IndexOutOfBoundsException(message);
@@ -366,9 +354,7 @@ public final class Checks
 																	final int size,
 																	@Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.size() != size) {
 			throw new IndexOutOfBoundsException(message);
@@ -412,9 +398,7 @@ public final class Checks
 																final int size,
 																@Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.size() != size) {
 			throw new IndexOutOfBoundsException(message);
@@ -458,9 +442,7 @@ public final class Checks
 														  final int size,
 														  @Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.length != size) {
 			throw new IndexOutOfBoundsException(message);
@@ -508,9 +490,7 @@ public final class Checks
 																		 final int toSize,
 																		 @Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.size() < fromSize || obj.size() > toSize) {
 			throw new IndexOutOfBoundsException(message);
@@ -558,9 +538,7 @@ public final class Checks
 															   final int toSize,
 															   @Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.length < fromSize || obj.length > toSize) {
 			throw new IndexOutOfBoundsException(message);
@@ -608,9 +586,7 @@ public final class Checks
 																	 final int toSize,
 																	 @Nullable final String message)
 	{
-		if (obj == null) {
-			throw new NullPointerException(message);
-		}
+		Checks.requireNotNull(obj, message);
 
 		if (obj.size() < fromSize || obj.size() > toSize) {
 			throw new IndexOutOfBoundsException(message);
