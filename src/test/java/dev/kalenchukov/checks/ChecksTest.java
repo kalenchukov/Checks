@@ -437,6 +437,74 @@ public class ChecksTest
 		}
 
 		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndSize(Map, int)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndSizeWithMap
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)}.
+			 */
+			@Test
+			public void requireNotNullAndSize()
+			{
+				Map<Integer, String> object, expectedObject;
+				object = expectedObject = Map.of(
+					1, "Один",
+					2, "Два",
+					3, "Три"
+				);
+				Map<Integer, String> actualObject = Checks.requireNotNullAndSize(object, 3);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)} с некорректным значением
+			 * из {@code null} в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithNull()
+			{
+				Map<Integer, String> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSize(object, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)} с некорректным значением
+			 * из пустой карты в первом параметре.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithEmpty()
+			{
+				Map<Integer, String> object = Map.of();
+
+				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSize(object, 3);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int, String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndSizeWithMessage()
+			{
+				Map<Integer, String> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndSize(object, 3, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
+
+		/**
 		 * Класс проверки метода {@link Checks#requireNotNullAndSize(Object[], int)}.
 		 *
 		 * @author Алексей Каленчуков

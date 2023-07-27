@@ -48,6 +48,7 @@ Checks.requireNotNullAndLength(myObject, 5);
 #### Проверка объекта на ```null``` и указанное количество элементов
 Поддерживаемые типы:
 * Collection
+* Map
 * Array
 
 ```java
