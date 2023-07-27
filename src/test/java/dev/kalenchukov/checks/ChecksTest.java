@@ -227,6 +227,76 @@ public class ChecksTest
 			}
 		}
 
+
+		/**
+		 * Класс проверки метода {@link Checks#requireNotNullAndNotEmpty(Map)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireNotNullAndNotEmptyWithMap
+		{
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)}.
+			 */
+			@Test
+			public void requireNotNullAndNotEmpty()
+			{
+				Map<Integer, String> object, expectedObject;
+				object = expectedObject = Map.of(
+					1, "Один",
+					2, "Два",
+					3, "Три"
+				);
+
+				Map<Integer, String> actualObject = Checks.requireNotNullAndNotEmpty(object);
+
+				assertThat(actualObject).isSameAs(expectedObject);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)} с некорректным значением
+			 * из {@code null}.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithNull()
+			{
+				Map<Integer, String> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndNotEmpty(object);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)} с некорректным значением
+			 * из пустой карты.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithEmpty()
+			{
+				Map<Integer, String> object = Map.of();
+
+				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndNotEmpty(object);
+				});
+			}
+
+			/**
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map, String)} с сообщением
+			 * для исключения.
+			 */
+			@Test
+			public void requireNotNullAndNotEmptyWithMessage()
+			{
+				Map<Integer, String> object = null;
+
+				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
+					Checks.requireNotNullAndNotEmpty(object, "Сообщение");
+				}).withMessage("Сообщение");
+			}
+		}
+
 		/**
 		 * Класс проверки метода {@link Checks#requireNotNullAndNotEmpty(Object[])}.
 		 *

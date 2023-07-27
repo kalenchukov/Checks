@@ -21,6 +21,7 @@ Checks.requireNotNull(myObject);
 Поддерживаемые типы:
 * CharSequence
 * Collection
+* Map
 * Array
 
 ```java
