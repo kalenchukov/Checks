@@ -82,7 +82,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустым значением.
+	 * @throws IllegalArgumentException если {@code obj} является пустым значением.
 	 */
 	@NotNull
 	public static <O extends CharSequence> O requireNotNullAndNotEmpty(@Nullable final O obj)
@@ -98,7 +98,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустым значением.
+	 * @throws IllegalArgumentException если {@code obj} является пустым значением.
 	 */
 	@NotNull
 	public static <O extends CharSequence> O requireNotNullAndNotEmpty(@Nullable final O obj,
@@ -120,7 +120,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустым массивом.
+	 * @throws IllegalArgumentException если {@code obj} является пустым массивом.
 	 */
 	@Nullable
 	public static <O> O @NotNull [] requireNotNullAndNotEmpty(@Nullable final O @Nullable [] obj)
@@ -136,7 +136,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустым массивом.
+	 * @throws IllegalArgumentException если {@code obj} является пустым массивом.
 	 */
 	@Nullable
 	public static <O> O @NotNull [] requireNotNullAndNotEmpty(@Nullable final O @Nullable [] obj,
@@ -158,7 +158,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустой коллекцией.
+	 * @throws IllegalArgumentException если {@code obj} является пустой коллекцией.
 	 */
 	@NotNull
 	public static <O extends Collection<?>> O requireNotNullAndNotEmpty(@Nullable final O obj)
@@ -174,7 +174,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустой коллекцией.
+	 * @throws IllegalArgumentException если {@code obj} является пустой коллекцией.
 	 */
 	@NotNull
 	public static <O extends Collection<?>> O requireNotNullAndNotEmpty(@Nullable final O obj,
@@ -196,7 +196,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустой карты.
+	 * @throws IllegalArgumentException если {@code obj} является пустой карты.
 	 */
 	@NotNull
 	public static <O extends Map<?, ?>> O requireNotNullAndNotEmpty(@Nullable final O obj)
@@ -212,7 +212,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или пустой карты.
+	 * @throws IllegalArgumentException если {@code obj} является пустой карты.
 	 */
 	@NotNull
 	public static <O extends Map<?, ?>> O requireNotNullAndNotEmpty(@Nullable final O obj,
@@ -235,8 +235,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или
-	 * не имеет указанного количества символов.
+	 * @throws IllegalArgumentException если {@code obj} не имеет указанного количества символов.
 	 */
 	@NotNull
 	public static <O extends CharSequence> O requireNotNullAndLength(@Nullable final O obj,
@@ -254,8 +253,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IllegalArgumentException если {@code obj} является {@code null} или
-	 * не имеет указанного количества символов.
+	 * @throws IllegalArgumentException если {@code obj} не имеет указанного количества символов.
 	 */
 	@NotNull
 	public static <O extends CharSequence> O requireNotNullAndLength(@Nullable final O obj,
@@ -280,8 +278,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет количества символов из диапазона.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет количества символов из диапазона.
 	 */
 	@NotNull
 	public static <O extends CharSequence> O requireNotNullAndLengthRange(@Nullable final O obj,
@@ -301,8 +298,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет количества символов из диапазона.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет количества символов из диапазона.
 	 */
 	@NotNull
 	public static <O extends CharSequence> O requireNotNullAndLengthRange(@Nullable final O obj,
@@ -327,8 +323,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет указанного количества элементов.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет указанного количества элементов.
 	 */
 	@NotNull
 	public static <O extends Collection<?>> O requireNotNullAndSize(@Nullable final O obj,
@@ -346,8 +341,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет указанного количества элементов.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет указанного количества элементов.
 	 */
 	@NotNull
 	public static <O extends Collection<?>> O requireNotNullAndSize(@Nullable final O obj,
@@ -371,8 +365,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет указанного количества элементов.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет указанного количества элементов.
 	 */
 	@NotNull
 	public static <O extends Map<?, ?>> O requireNotNullAndSize(@Nullable final O obj,
@@ -390,8 +383,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет указанного количества элементов.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет указанного количества элементов.
 	 */
 	@NotNull
 	public static <O extends Map<?, ?>> O requireNotNullAndSize(@Nullable final O obj,
@@ -415,8 +407,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет указанного количества элементов.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет указанного количества элементов.
 	 */
 	@Nullable
 	public static <O> O @NotNull [] requireNotNullAndSize(@Nullable final O @Nullable [] obj,
@@ -434,8 +425,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет указанного количества элементов.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет указанного количества элементов.
 	 */
 	@Nullable
 	public static <O> O @NotNull [] requireNotNullAndSize(@Nullable final O @Nullable [] obj,
@@ -460,8 +450,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет количества элементов из диапазона.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет количества элементов из диапазона.
 	 */
 	@NotNull
 	public static <O extends Collection<?>> O requireNotNullAndSizeRange(@Nullable final O obj,
@@ -481,8 +470,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет количества элементов из диапазона.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет количества элементов из диапазона.
 	 */
 	@NotNull
 	public static <O extends Collection<?>> O requireNotNullAndSizeRange(@Nullable final O obj,
@@ -508,8 +496,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет количества элементов из диапазона.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет количества элементов из диапазона.
 	 */
 	@Nullable
 	public static <O> O @NotNull [] requireNotNullAndSizeRange(@Nullable final O @Nullable [] obj,
@@ -529,8 +516,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет количества элементов из диапазона.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет количества элементов из диапазона.
 	 */
 	@Nullable
 	public static <O> O @NotNull [] requireNotNullAndSizeRange(@Nullable final O @Nullable [] obj,
@@ -556,8 +542,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет количества элементов из диапазона.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет количества элементов из диапазона.
 	 */
 	@NotNull
 	public static <O extends Map<?, ?>> O requireNotNullAndSizeRange(@Nullable final O obj,
@@ -577,8 +562,7 @@ public final class Checks
 	 * @param <O> тип проверяемого объекта.
 	 * @return проверяемый объект.
 	 * @throws NullPointerException если {@code obj} является {@code null}.
-	 * @throws IndexOutOfBoundsException если {@code obj} является {@code null} или
-	 * не имеет количества элементов из диапазона.
+	 * @throws IndexOutOfBoundsException если {@code obj} не имеет количества элементов из диапазона.
 	 */
 	@NotNull
 	public static <O extends Map<?, ?>> O requireNotNullAndSizeRange(@Nullable final O obj,
