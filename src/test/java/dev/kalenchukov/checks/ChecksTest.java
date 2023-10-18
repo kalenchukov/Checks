@@ -69,8 +69,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNull(Object)} с некорректным значением
-			 * из {@code null}.
+			 * Проверка метода {@link Checks#requireNotNull(Object)} с {@code null}.
 			 */
 			@Test
 			public void requireNotNullWithNull()
@@ -83,8 +82,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNull(Object, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNull(Object, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullWithMessage()
@@ -120,8 +118,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)} с некорректным значением
-			 * из {@code null}.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)} с {@code null}.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithNull()
@@ -134,8 +131,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)} с некорректным значением
-			 * из пустой строки.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)} с пустой строкой.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithEmpty()
@@ -148,8 +144,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithMessage()
@@ -185,8 +180,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)} с некорректным значением
-			 * из {@code null}.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)} с {@code null}.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithNull()
@@ -199,8 +193,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)} с некорректным значением
-			 * из пустой коллекции.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)} с пустой коллекцией.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithEmpty()
@@ -213,8 +206,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithMessage()
@@ -255,8 +247,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)} с некорректным значением
-			 * из {@code null}.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)} с {@code null}.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithNull()
@@ -269,8 +260,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)} с некорректным значением
-			 * из пустой карты.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)} с пустой картой.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithEmpty()
@@ -283,8 +273,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithMessage()
@@ -334,8 +323,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с некорректным значением
-			 * из {@code null}.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с {@code null}.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithNull()
@@ -348,8 +336,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с некорректным значением
-			 * из пустого массива.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с пустого массива.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithEmpty()
@@ -362,8 +349,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[], String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[], String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndNotEmptyWithMessage()
@@ -399,8 +385,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)} с некорректным значением
-			 * из {@code null} в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)} с {@code null} в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndLengthWithNull()
@@ -413,8 +398,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)} с некорректным значением
-			 * из пустой строки в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)} с пустой строкой в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndLengthWithEmpty()
@@ -427,8 +411,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndLengthWithMessage()
@@ -464,8 +447,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)} с некорректным значением
-			 * из {@code null} в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)} с {@code null} в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeWithNull()
@@ -478,8 +460,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)} с некорректным значением
-			 * из пустой коллекции в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)} с пустой коллекцией в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeWithEmpty()
@@ -492,8 +473,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndSizeWithMessage()
@@ -532,8 +512,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)} с некорректным значением
-			 * из {@code null} в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)} с {@code null} в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeWithNull()
@@ -546,8 +525,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)} с некорректным значением
-			 * из пустой карты в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)} с пустой картой в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeWithEmpty()
@@ -560,8 +538,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndSizeWithMessage()
@@ -611,8 +588,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с некорректным значением
-			 * из {@code null} в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с {@code null} в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeWithNull()
@@ -625,8 +601,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с некорректным значением
-			 * из пустого массива в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с пустого массива в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeWithEmpty()
@@ -639,8 +614,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndSizeWithMessage()
@@ -676,8 +650,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
-			 * из {@code null} в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с {@code null} в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeRangeWithNull()
@@ -690,8 +663,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
-			 * из пустой коллекции в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с пустой коллекцией в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeRangeWithEmpty()
@@ -732,8 +704,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndSizeRangeWithMessage()
@@ -769,8 +740,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с некорректным значением
-			 * из {@code null} в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с {@code null} в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeRangeWithNull()
@@ -783,8 +753,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с некорректным значением
-			 * из пустой массива в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с пустой массивом в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeRangeWithEmpty()
@@ -825,8 +794,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndSizeRangeWithMessage()
@@ -866,8 +834,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с некорректным значением
-			 * из {@code null} в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с {@code null} в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeRangeWithNull()
@@ -880,8 +847,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с некорректным значением
-			 * из пустой карты в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с пустой картой в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndSizeRangeWithEmpty()
@@ -926,8 +892,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndSizeRangeWithMessage()
@@ -963,8 +928,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с некорректным значением
-			 * из {@code null} в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с {@code null} в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndLengthWithNull()
@@ -977,8 +941,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с некорректным значением
-			 * из пустой строки в первом параметре.
+			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с пустой строкой в первом параметре.
 			 */
 			@Test
 			public void requireNotNullAndLengthWithEmpty()
@@ -1019,8 +982,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int, String)} с сообщением
-			 * для исключения.
+			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int, String)} с сообщением для исключения.
 			 */
 			@Test
 			public void requireNotNullAndLengthWithMessage()
