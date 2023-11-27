@@ -17,6 +17,6 @@
  */
 
 /**
- * Предоставляет классы, необходимые для исполнения цели модуля.
+ * Предоставляет интерфейсы, необходимые для реализации классов проверяющих.
  */
-package dev.kalenchukov.checks;
+package dev.kalenchukov.checks.handlers.interfaces;

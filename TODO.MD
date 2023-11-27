@@ -1,30 +1,21 @@
 # Список задач
 ## Сделать
-* requireNotNullAndNotLength()
-
-* requireNotNullAndNotLengthRange()
-
-* requireNotNullAndNotSize()
-
-* requireNotNullAndNotSizeRange()
-
-* requireNotNullAndNotZero()
-
-* requireNotNullAndNotPositive()
-* requireNotNullAndNotNegative()
-
-* requireNotNullAndNotPositiveAndNotZero()
-* requireNotNullAndNotNegativeAndNotZero()
-
-* requireNotNullAndRange()
-* requireNotNullAndNotRange()
-
-* requireNotNullAndContainsNull()
-* requireNotNullAndNotContainsNull()
+*
 
 ## Можно сделать
-* Выбрасывать свои исключения в которых можно будет получить некорректные значения и указать их в тексте сообщения.
-* Методы для типов BigInteger и BigDecimal.
+* Добавить метод notEvenSize().
+* Добавить метод notOddSize().
+* Добавить метод notEvenLength().
+* Добавить метод notOddLength().
+* Добавить метод notContainsNull().
+* Добавить возможность проверки типа Byte.
+* Добавить возможность проверки типа Short.
+* Добавить возможность проверки типа Long.
+* Добавить возможность проверки типа Float.
+* Добавить возможность проверки типа Double.
+* Добавить возможность проверки типа Character.
+* Добавить возможность проверки типа BigInteger.
+* Добавить возможность проверки типа BigDecimal.
 
 ## Не делать
 

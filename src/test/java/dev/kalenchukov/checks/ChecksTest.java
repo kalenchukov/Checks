@@ -3,33 +3,29 @@
  * GitHub: https://github.com/kalenchukov
  * E-mail: mailto:aleksey.kalenchukov@yandex.ru
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package dev.kalenchukov.checks;
 
+import dev.kalenchukov.checks.handlers.*;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.*;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Класс проверки методов класса {@link Checks}.
@@ -47,951 +43,450 @@ public class ChecksTest
 	public class Static
 	{
 		/**
-		 * Класс проверки метода {@link Checks#requireNotNull(Object)}.
+		 * Класс проверки метода {@link Checks#require(Integer)}.
 		 *
 		 * @author Алексей Каленчуков
 		 */
 		@Nested
-		public class RequireNotNull
+		public class RequireWithInteger
 		{
 			/**
-			 * Проверка метода {@link Checks#requireNotNull(Object)}.
+			 * Проверка метода {@link Checks#require(Integer)} с корректным значением.
 			 */
 			@Test
-			public void requireNotNull()
+			public void checkValid()
 			{
-				String object, expectedObject;
-				object = expectedObject = "Текст";
+				Integer object = 1;
+				IntegerCheck expected = new IntegerCheck(object);
 
-				String actualObject = Checks.requireNotNull(object);
+				IntegerCheck actual = Checks.require(object);
 
-				assertThat(actualObject).isSameAs(expectedObject);
+				assertThat(actual).isEqualTo(expected);
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNull(Object)} с {@code null}.
+			 * Проверка метода {@link Checks#require(Integer)} с корректным значением в виде {@code null}.
 			 */
 			@Test
-			public void requireNotNullWithNull()
+			public void checkWithNull()
 			{
-				String object = null;
+				Integer object = null;
+				IntegerCheck expected = new IntegerCheck(object);
 
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNull(object);
-				});
-			}
+				IntegerCheck actual = Checks.require(object);
 
-			/**
-			 * Проверка метода {@link Checks#requireNotNull(Object, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullWithMessage()
-			{
-				String object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNull(object, "Сообщение");
-				}).withMessage("Сообщение");
+				assertThat(actual).isEqualTo(expected);
 			}
 		}
 
 		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)}.
+		 * Класс проверки метода {@link Checks#require(String)}.
 		 *
 		 * @author Алексей Каленчуков
 		 */
 		@Nested
-		public class RequireNotNullAndNotEmptyWithCharSequence
+		public class RequireWithString
 		{
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)}.
+			 * Проверка метода {@link Checks#require(String)} с корректным значением.
 			 */
 			@Test
-			public void requireNotNullAndNotEmpty()
+			public void checkValid()
 			{
-				String object, expectedObject;
-				object = expectedObject = "Текст";
+				String object = "Когда твоя девушка больна";
+				StringCheck expected = new StringCheck(object);
 
-				String actualObject = Checks.requireNotNullAndNotEmpty(object);
+				StringCheck actual = Checks.require(object);
 
-				assertThat(actualObject).isSameAs(expectedObject);
+				assertThat(actual).isEqualTo(expected);
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)} с {@code null}.
+			 * Проверка метода {@link Checks#require(String)} с корректным значением в виде {@code null}.
 			 */
 			@Test
-			public void requireNotNullAndNotEmptyWithNull()
+			public void checkWithNull()
 			{
 				String object = null;
+				StringCheck expected = new StringCheck(object);
 
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object);
-				});
-			}
+				StringCheck actual = Checks.require(object);
 
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence)} с пустой строкой.
-			 */
-			@Test
-			public void requireNotNullAndNotEmptyWithEmpty()
-			{
-				String object = "";
-
-				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(CharSequence, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndNotEmptyWithMessage()
-			{
-				String object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object, "Сообщение");
-				}).withMessage("Сообщение");
+				assertThat(actual).isEqualTo(expected);
 			}
 		}
 
 		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndNotEmpty(Collection)}.
+		 * Класс проверки метода {@link Checks#require(StringBuilder)}.
 		 *
 		 * @author Алексей Каленчуков
 		 */
 		@Nested
-		public class RequireNotNullAndNotEmptyWithCollection
+		public class RequireWithStringBuilder
 		{
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)}.
+			 * Проверка метода {@link Checks#require(StringBuilder)} с корректным значением.
 			 */
 			@Test
-			public void requireNotNullAndNotEmpty()
+			public void checkValid()
 			{
-				Collection<String> object, expectedObject;
-				object = expectedObject = List.of("Текст");
+				StringBuilder object = new StringBuilder("Когда твоя девушка больна");
+				StringBuilderCheck expected = new StringBuilderCheck(object);
 
-				Collection<String> actualObject = Checks.requireNotNullAndNotEmpty(object);
+				StringBuilderCheck actual = Checks.require(object);
 
-				assertThat(actualObject).isSameAs(expectedObject);
+				assertThat(actual).isEqualTo(expected);
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)} с {@code null}.
+			 * Проверка метода {@link Checks#require(StringBuilder)} с корректным значением в виде {@code null}.
 			 */
 			@Test
-			public void requireNotNullAndNotEmptyWithNull()
+			public void checkWithNull()
+			{
+				StringBuilder object = null;
+				StringBuilderCheck expected = new StringBuilderCheck(object);
+
+				StringBuilderCheck actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+		}
+
+		/**
+		 * Класс проверки метода {@link Checks#require(CharSequence)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireWithCharSequence
+		{
+			/**
+			 * Проверка метода {@link Checks#require(CharSequence)} с корректным значением.
+			 */
+			@Test
+			public void checkValid()
+			{
+				CharSequence object = "Когда твоя девушка больна";
+				CharSequenceCheck expected = new CharSequenceCheck(object);
+
+				CharSequenceCheck actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#require(CharSequence)} с корректным значением в виде {@code null}.
+			 */
+			@Test
+			public void checkWithNull()
+			{
+				CharSequence object = null;
+				CharSequenceCheck expected = new CharSequenceCheck(object);
+
+				CharSequenceCheck actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+		}
+
+		/**
+		 * Класс проверки метода {@link Checks#require(List)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireWithList
+		{
+			/**
+			 * Проверка метода {@link Checks#require(List)} с корректным значением.
+			 */
+			@Test
+			public void checkValid()
+			{
+				List<String> object = List.of("Весна", "Сосны на морском берегу");
+				ListCheck<String> expected = new ListCheck<>(object);
+
+				ListCheck<String> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#require(List)} с корректным значением в виде {@code null}.
+			 */
+			@Test
+			public void checkWithNull()
+			{
+				List<String> object = null;
+				ListCheck<String> expected = new ListCheck<>(object);
+
+				ListCheck<String> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#require(List)} с корректным значением содержащим {@code null}.
+			 */
+			@Test
+			public void checkWithValueNull()
+			{
+				List<String> object = new ArrayList<>();
+				object.add("Весна");
+				object.add(null);
+				ListCheck<String> expected = new ListCheck<>(object);
+
+				ListCheck<String> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+		}
+
+		/**
+		 * Класс проверки метода {@link Checks#require(Set)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireWithSet
+		{
+			/**
+			 * Проверка метода {@link Checks#require(Set)} с корректным значением.
+			 */
+			@Test
+			public void checkValid()
+			{
+				Set<Integer> object = Set.of(13, 11);
+				SetCheck<Integer> expected = new SetCheck<>(object);
+
+				SetCheck<Integer> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#require(Set)} с корректным значением в виде {@code null}.
+			 */
+			@Test
+			public void checkWithNull()
+			{
+				Set<Integer> object = null;
+				SetCheck<Integer> expected = new SetCheck<>(object);
+
+				SetCheck<Integer> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#require(Set)} с корректным значением содержащим {@code null}.
+			 */
+			@Test
+			public void checkWithValueNull()
+			{
+				Set<Integer> object = new HashSet<>();
+				object.add(13);
+				object.add(null);
+				SetCheck<Integer> expected = new SetCheck<>(object);
+
+				SetCheck<Integer> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+		}
+
+		/**
+		 * Класс проверки метода {@link Checks#require(Collection)}.
+		 *
+		 * @author Алексей Каленчуков
+		 */
+		@Nested
+		public class RequireWithCollection
+		{
+			/**
+			 * Проверка метода {@link Checks#require(Collection)} с корректным значением.
+			 */
+			@Test
+			public void checkValid()
+			{
+				Collection<String> object = List.of("Бездельник", "Муравейник");
+				CollectionCheck<String> expected = new CollectionCheck<>(object);
+
+				CollectionCheck<String> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
+			}
+
+			/**
+			 * Проверка метода {@link Checks#require(Collection)} с корректным значением в виде {@code null}.
+			 */
+			@Test
+			public void checkWithNull()
 			{
 				Collection<String> object = null;
+				CollectionCheck<String> expected = new CollectionCheck<>(object);
 
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object);
-				});
+				CollectionCheck<String> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection)} с пустой коллекцией.
+			 * Проверка метода {@link Checks#require(Collection)} с корректным значением содержащим {@code null}.
 			 */
 			@Test
-			public void requireNotNullAndNotEmptyWithEmpty()
+			public void checkWithValueNull()
 			{
-				Collection<String> object = List.of();
+				Collection<String> object = new ArrayList<>();
+				object.add(null);
+				object.add("Муравейник");
+				CollectionCheck<String> expected = new CollectionCheck<>(object);
 
-				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object);
-				});
-			}
+				CollectionCheck<String> actual = Checks.require(object);
 
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Collection, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndNotEmptyWithMessage()
-			{
-				Collection<String> object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object, "Сообщение");
-				}).withMessage("Сообщение");
+				assertThat(actual).isEqualTo(expected);
 			}
 		}
 
-
 		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndNotEmpty(Map)}.
+		 * Класс проверки метода {@link Checks#require(Map)}.
 		 *
 		 * @author Алексей Каленчуков
 		 */
 		@Nested
-		public class RequireNotNullAndNotEmptyWithMap
+		public class RequireWithMap
 		{
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)}.
+			 * Проверка метода {@link Checks#require(Map)} с корректным значением.
 			 */
 			@Test
-			public void requireNotNullAndNotEmpty()
+			public void checkValid()
 			{
-				Map<Integer, String> object, expectedObject;
-				object = expectedObject = Map.of(
-					1, "Один",
-					2, "Два",
-					3, "Три"
-				);
+				Map<Integer, String> object = new HashMap<>();
+				MapCheck<Integer, String> expected = new MapCheck<>(object);
 
-				Map<Integer, String> actualObject = Checks.requireNotNullAndNotEmpty(object);
+				MapCheck<Integer, String> actual = Checks.require(object);
 
-				assertThat(actualObject).isSameAs(expectedObject);
+				assertThat(actual).isEqualTo(expected);
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)} с {@code null}.
+			 * Проверка метода {@link Checks#require(Map)} с корректным значением в виде {@code null}.
 			 */
 			@Test
-			public void requireNotNullAndNotEmptyWithNull()
+			public void checkWithNull()
 			{
 				Map<Integer, String> object = null;
+				MapCheck<Integer, String> expected = new MapCheck<>(object);
 
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object);
-				});
+				MapCheck<Integer, String> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map)} с пустой картой.
+			 * Проверка метода {@link Checks#require(Map)} с корректным значением содержащим {@code null}.
 			 */
 			@Test
-			public void requireNotNullAndNotEmptyWithEmpty()
+			public void checkWithValueNull()
 			{
-				Map<Integer, String> object = Map.of();
+				Map<Integer, String> object = new HashMap<>();
+				object.put(1, null);
+				object.put(null, "test");
+				MapCheck<Integer, String> expected = new MapCheck<>(object);
 
-				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object);
-				});
-			}
+				MapCheck<Integer, String> actual = Checks.require(object);
 
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Map, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndNotEmptyWithMessage()
-			{
-				Map<Integer, String> object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object, "Сообщение");
-				}).withMessage("Сообщение");
+				assertThat(actual).isEqualTo(expected);
 			}
 		}
 
 		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndNotEmpty(Object[])}.
+		 * Класс проверки метода {@link Checks#require(Object[])}.
 		 *
 		 * @author Алексей Каленчуков
 		 */
 		@Nested
-		public class RequireNotNullAndNotEmptyWithArray
+		public class RequireWithArray
 		{
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])}.
+			 * Проверка метода {@link Checks#require(Object[])} с корректным значением.
 			 */
 			@Test
-			public void requireNotNullAndNotEmpty()
+			public void checkValid()
 			{
-				String[] object, expectedObject;
-				object = expectedObject = new String[] {"Текст"};
+				Integer[] object = new Integer[]{1, 2};
+				ArrayCheck<Integer> expected = new ArrayCheck<>(object);
 
-				String[] actualObject = Checks.requireNotNullAndNotEmpty(object);
+				ArrayCheck<Integer> actual = Checks.require(object);
 
-				assertThat(actualObject).isSameAs(expectedObject);
+				assertThat(actual).isEqualTo(expected);
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с наличием {@code null} значений.
+			 * Проверка метода {@link Checks#require(Object[])} с корректным значением в виде {@code null}.
 			 */
 			@Test
-			public void requireNotNullAndNotEmptyWithValueNull()
-			{
-				String[] object, expectedObject;
-				object = expectedObject = new String[] {"Текст", null, "Text"};
-
-				String[] actualObject = Checks.requireNotNullAndNotEmpty(object);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с {@code null}.
-			 */
-			@Test
-			public void requireNotNullAndNotEmptyWithNull()
-			{
-				String[] object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[])} с пустого массива.
-			 */
-			@Test
-			public void requireNotNullAndNotEmptyWithEmpty()
-			{
-				String[] object = new String[] {};
-
-				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndNotEmpty(Object[], String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndNotEmptyWithMessage()
-			{
-				String[] object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndNotEmpty(object, "Сообщение");
-				}).withMessage("Сообщение");
-			}
-		}
-
-		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndLength(CharSequence, int)}.
-		 *
-		 * @author Алексей Каленчуков
-		 */
-		@Nested
-		public class RequireNotNullAndLength
-		{
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)}.
-			 */
-			@Test
-			public void requireNotNullAndLength()
-			{
-				String object, expectedObject;
-				object = expectedObject = "Текст";
-
-				String actualObject = Checks.requireNotNullAndLength(object, 5);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)} с {@code null} в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndLengthWithNull()
-			{
-				String object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLength(object, 5);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int)} с пустой строкой в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndLengthWithEmpty()
-			{
-				String object = "";
-
-				assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLength(object, 5);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLength(CharSequence, int, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndLengthWithMessage()
-			{
-				String object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLength(object, 5, "Сообщение");
-				}).withMessage("Сообщение");
-			}
-		}
-
-		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndSize(Collection, int)}.
-		 *
-		 * @author Алексей Каленчуков
-		 */
-		@Nested
-		public class RequireNotNullAndSizeWithCollection
-		{
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)}.
-			 */
-			@Test
-			public void requireNotNullAndSize()
-			{
-				Collection<Integer> object, expectedObject;
-				object = expectedObject = List.of(1, 2, 3);
-
-				Collection<Integer> actualObject = Checks.requireNotNullAndSize(object, 3);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)} с {@code null} в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeWithNull()
-			{
-				Collection<Integer> object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSize(object, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int)} с пустой коллекцией в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeWithEmpty()
-			{
-				Collection<Integer> object = List.of();
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSize(object, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Collection, int, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndSizeWithMessage()
-			{
-				Collection<Integer> object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSize(object, 3, "Сообщение");
-				}).withMessage("Сообщение");
-			}
-		}
-
-		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndSize(Map, int)}.
-		 *
-		 * @author Алексей Каленчуков
-		 */
-		@Nested
-		public class RequireNotNullAndSizeWithMap
-		{
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)}.
-			 */
-			@Test
-			public void requireNotNullAndSize()
-			{
-				Map<Integer, String> object, expectedObject;
-				object = expectedObject = Map.of(
-					1, "Один",
-					2, "Два",
-					3, "Три"
-				);
-				Map<Integer, String> actualObject = Checks.requireNotNullAndSize(object, 3);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)} с {@code null} в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeWithNull()
-			{
-				Map<Integer, String> object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSize(object, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int)} с пустой картой в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeWithEmpty()
-			{
-				Map<Integer, String> object = Map.of();
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSize(object, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Map, int, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndSizeWithMessage()
-			{
-				Map<Integer, String> object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSize(object, 3, "Сообщение");
-				}).withMessage("Сообщение");
-			}
-		}
-
-		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndSize(Object[], int)}.
-		 *
-		 * @author Алексей Каленчуков
-		 */
-		@Nested
-		public class RequireNotNullAndSizeWithArray
-		{
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)}.
-			 */
-			@Test
-			public void requireNotNullAndSize()
-			{
-				Integer[] object, expectedObject;
-				object = expectedObject = new Integer[] {1, 2, 3};
-
-				Integer[] actualObject = Checks.requireNotNullAndSize(object, 3);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с наличием {@code null} значений.
-			 */
-			@Test
-			public void requireNotNullAndSizeWithValueNull()
-			{
-				Integer[] object, expectedObject;
-				object = expectedObject = new Integer[] {1, null, 3};
-
-				Integer[] actualObject = Checks.requireNotNullAndSize(object, 3);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с {@code null} в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeWithNull()
+			public void checkWithNull()
 			{
 				Integer[] object = null;
+				ArrayCheck<Integer> expected = new ArrayCheck<>(object);
 
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSize(object, 3);
-				});
+				ArrayCheck<Integer> actual = Checks.require(object);
+
+				assertThat(actual).isEqualTo(expected);
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int)} с пустого массива в первом параметре.
+			 * Проверка метода {@link Checks#require(Object[])} с корректным значением содержащим {@code null}.
 			 */
 			@Test
-			public void requireNotNullAndSizeWithEmpty()
+			public void checkWithValueNull()
 			{
-				Integer[] object = new Integer[] {};
+				Integer[] object = new Integer[]{null, 2};
+				ArrayCheck<Integer> expected = new ArrayCheck<>(object);
 
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSize(object, 3);
-				});
-			}
+				ArrayCheck<Integer> actual = Checks.require(object);
 
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSize(Object[], int, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndSizeWithMessage()
-			{
-				Integer[] object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSize(object, 3, "Сообщение");
-				}).withMessage("Сообщение");
+				assertThat(actual).isEqualTo(expected);
 			}
 		}
 
 		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)}.
+		 * Класс проверки метода {@link Checks#require(Object)}.
 		 *
 		 * @author Алексей Каленчуков
 		 */
 		@Nested
-		public class RequireNotNullAndSizeRangeWithCollection
+		public class RequireWithObject
 		{
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)}.
+			 * Проверка метода {@link Checks#require(Object)} с корректным значением.
 			 */
 			@Test
-			public void requireNotNullAndSizeRange()
+			public void checkValid()
 			{
-				Collection<Integer> object, expectedObject;
-				object = expectedObject = List.of(1, 2, 3);
+				Object object = new Object();
+				ObjectCheck<Object> expected = new ObjectCheck<>(object);
 
-				Collection<Integer> actualObject = Checks.requireNotNullAndSizeRange(object, 1, 3);
+				ObjectCheck<Object> actual = Checks.require(object);
 
-				assertThat(actualObject).isSameAs(expectedObject);
+				assertThat(actual).isEqualTo(expected);
 			}
 
 			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с {@code null} в первом параметре.
+			 * Проверка метода {@link Checks#require(Object)} с корректным значением в виде {@code null}.
 			 */
 			@Test
-			public void requireNotNullAndSizeRangeWithNull()
+			public void checkWithNull()
 			{
-				Collection<Integer> object = null;
+				File object = null;
+				ObjectCheck<Object> expected = new ObjectCheck<>(object);
 
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 1, 3);
-				});
-			}
+				ObjectCheck<Object> actual = Checks.require(object);
 
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с пустой коллекцией в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithEmpty()
-			{
-				Collection<Integer> object = List.of();
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 1, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
-			 * в виде нарушения нижней границы.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithInvalidFrom()
-			{
-				Collection<Integer> object = List.of(1);
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 2, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int)} с некорректным значением
-			 * в виде нарушения верхней границы.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithInvalidTo()
-			{
-				Collection<Integer> object = List.of(1, 2, 3, 4);
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 2, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Collection, int, int, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithMessage()
-			{
-				Collection<Integer> object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 1, 3, "Сообщение");
-				}).withMessage("Сообщение");
-			}
-		}
-
-		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)}.
-		 *
-		 * @author Алексей Каленчуков
-		 */
-		@Nested
-		public class RequireNotNullAndSizeRangeWithArray
-		{
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)}.
-			 */
-			@Test
-			public void requireNotNullAndSizeRange()
-			{
-				Integer[] object, expectedObject;
-				object = expectedObject = new Integer[] {1, 2, 3};
-
-				Integer[] actualObject = Checks.requireNotNullAndSizeRange(object, 1, 3);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с {@code null} в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithNull()
-			{
-				Integer[] object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 1, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с пустой массивом в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithEmpty()
-			{
-				Integer[] object = new Integer[] {};
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 1, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с некорректным значением
-			 * в виде нарушения нижней границы.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithInvalidFrom()
-			{
-				Integer[] object = new Integer[] {1};
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 2, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int)} с некорректным значением
-			 * в виде нарушения верхней границы.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithInvalidTo()
-			{
-				Integer[] object = new Integer[] {1, 2, 3, 4};
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 2, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Object[], int, int, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithMessage()
-			{
-				Integer[] object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 1, 3, "Сообщение");
-				}).withMessage("Сообщение");
-			}
-		}
-
-		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)}.
-		 *
-		 * @author Алексей Каленчуков
-		 */
-		@Nested
-		public class RequireNotNullAndSizeRangeWithMap
-		{
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)}.
-			 */
-			@Test
-			public void requireNotNullAndSizeRange()
-			{
-				Map<Integer, String> object, expectedObject;
-				object = expectedObject = Map.of(
-					1, "Один",
-					2, "Два",
-					3, "Три"
-				);
-
-				Map<Integer, String> actualObject = Checks.requireNotNullAndSizeRange(object, 1, 3);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с {@code null} в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithNull()
-			{
-				Map<Integer, String> object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 1, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с пустой картой в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithEmpty()
-			{
-				Map<Integer, String> object = Map.of();
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 1, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с некорректным значением
-			 * в виде нарушения нижней границы.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithInvalidFrom()
-			{
-				Map<Integer, String> object = Map.of(1, "Один");
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 2, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int)} с некорректным значением
-			 * в виде нарушения верхней границы.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithInvalidTo()
-			{
-				Map<Integer, String> object = Map.of(
-					1, "Один",
-					2, "Два",
-					3, "Три",
-					4, "Четыре"
-				);
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 2, 3);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndSizeRange(Map, int, int, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndSizeRangeWithMessage()
-			{
-				Map<Integer, String> object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndSizeRange(object, 1, 3, "Сообщение");
-				}).withMessage("Сообщение");
-			}
-		}
-
-		/**
-		 * Класс проверки метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)}.
-		 *
-		 * @author Алексей Каленчуков
-		 */
-		@Nested
-		public class RequireNotNullAndLengthRange
-		{
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)}.
-			 */
-			@Test
-			public void requireNotNullAndLengthRange()
-			{
-				String object, expectedObject;
-				object = expectedObject = "Текст";
-
-				String actualObject = Checks.requireNotNullAndLengthRange(object, 1, 5);
-
-				assertThat(actualObject).isSameAs(expectedObject);
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с {@code null} в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndLengthWithNull()
-			{
-				String object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLengthRange(object, 1, 5);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с пустой строкой в первом параметре.
-			 */
-			@Test
-			public void requireNotNullAndLengthWithEmpty()
-			{
-				String object = "";
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLengthRange(object, 1, 5);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с некорректным значением
-			 * в виде нарушения нижней границы.
-			 */
-			@Test
-			public void requireNotNullAndLengthWithInvalidFrom()
-			{
-				String object = "Т";
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLengthRange(object, 2, 5);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int)} с некорректным значением
-			 * в виде нарушения верхней границы.
-			 */
-			@Test
-			public void requireNotNullAndLengthWithInvalidTo()
-			{
-				String object = "Тексты";
-
-				assertThatExceptionOfType(IndexOutOfBoundsException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLengthRange(object, 2, 5);
-				});
-			}
-
-			/**
-			 * Проверка метода {@link Checks#requireNotNullAndLengthRange(CharSequence, int, int, String)} с сообщением для исключения.
-			 */
-			@Test
-			public void requireNotNullAndLengthWithMessage()
-			{
-				String object = null;
-
-				assertThatExceptionOfType(NullPointerException.class).isThrownBy(() -> {
-					Checks.requireNotNullAndLengthRange(object, 1, 5, "Сообщение");
-				}).withMessage("Сообщение");
+				assertThat(actual).isEqualTo(expected);
 			}
 		}
 	}

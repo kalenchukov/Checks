@@ -17,6 +17,6 @@
  */
 
 /**
- * Предоставляет классы, необходимые для исполнения цели модуля.
+ * Предоставляет классы, необходимые для конкретизации исключений.
  */
-package dev.kalenchukov.checks;
+package dev.kalenchukov.checks.exceptions;

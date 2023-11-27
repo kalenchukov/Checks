@@ -16,7 +16,16 @@
  * limitations under the License.
  */
 
+package dev.kalenchukov.checks.handlers.interfaces;
+
 /**
- * Предоставляет классы, необходимые для исполнения цели модуля.
+ * Интерфейс для реализации проверяющего объекты типа {@code Integer}.
+ *
+ * @param <SELF> тип проверяющего объекта.
+ * @param <T> тип проверяемого объекта.
+ * @author Алексей Каленчуков
  */
-package dev.kalenchukov.checks;
+public interface IntegerChecking<SELF, T>
+{
+
+}
