@@ -45,10 +45,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotEmpty
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notEmpty()} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notEmpty()}.
 		 */
 		@Test
-		public void notEmptyValid()
+		public void notEmpty()
 		{
 			StringBuilder object = new StringBuilder(
 				"Сосны на морском берегу"
@@ -64,7 +64,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notEmpty()} с некорректным значением.
 		 */
 		@Test
-		public void notEmptyInvalid()
+		public void notEmptyWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder();
 			StringBuilderCheck stringBuilderCheck = new StringBuilderCheck(object);
@@ -96,10 +96,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotEmptyWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notEmpty(String)} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notEmpty(String)}.
 		 */
 		@Test
-		public void notEmptyValid()
+		public void notEmpty()
 		{
 			StringBuilder object = new StringBuilder(
 				"Сосны на морском берегу"
@@ -116,7 +116,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notEmpty(String)} с некорректным значением.
 		 */
 		@Test
-		public void notEmptyInvalid()
+		public void notEmptyWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder();
 			String message = "Мне не долго осталось ждать, чтобы снова увидеть сосны на морском берегу...";
@@ -152,10 +152,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotLength
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notLength(int)} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notLength(int)}.
 		 */
 		@Test
-		public void notLengthValid()
+		public void notLength()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -171,7 +171,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notLength(int)} с некорректным значением.
 		 */
 		@Test
-		public void notLengthInvalid()
+		public void notLengthWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -205,10 +205,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotLengthWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notLength(int, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notLength(int, String)}.
 		 */
 		@Test
-		public void notLengthValid()
+		public void notLength()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -225,7 +225,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notLength(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notLengthInvalid()
+		public void notLengthWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -263,10 +263,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotRangeLength
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notRangeLength(int, int)} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notRangeLength(int, int)}.
 		 */
 		@Test
-		public void notRangeLengthValid()
+		public void notRangeLength()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -282,7 +282,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notRangeLength(int, int)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeLengthInvalid()
+		public void notRangeLengthWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -316,10 +316,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotRangeLengthWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notRangeLength(int, int, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notRangeLength(int, int, String)}.
 		 */
 		@Test
-		public void notRangeLengthValid()
+		public void notRangeLength()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -336,7 +336,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notRangeLength(int, int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeLengthInvalid()
+		public void notRangeLengthWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -374,10 +374,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotMoreLength
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notMoreLength(int)} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notMoreLength(int)}.
 		 */
 		@Test
-		public void notMoreLengthValid()
+		public void notMoreLength()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -393,7 +393,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notMoreLength(int)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreLengthInvalid()
+		public void notMoreLengthWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -427,10 +427,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotMoreLengthWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notMoreLength(int, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notMoreLength(int, String)}.
 		 */
 		@Test
-		public void notMoreLengthValid()
+		public void notMoreLength()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -447,7 +447,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notMoreLength(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreLengthInvalid()
+		public void notMoreLengthWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -485,10 +485,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotLessLength
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notLessLength(int)} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notLessLength(int)}.
 		 */
 		@Test
-		public void notLessLengthValid()
+		public void notLessLength()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -504,7 +504,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notLessLength(int)} с некорректным значением.
 		 */
 		@Test
-		public void notLessLengthInvalid()
+		public void notLessLengthWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -538,10 +538,10 @@ public class AbstractCharSequenceCheckTest
 	public class NotLessLengthWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCharSequenceCheck#notLessLength(int, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCharSequenceCheck#notLessLength(int, String)}.
 		 */
 		@Test
-		public void notLessLengthValid()
+		public void notLessLength()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"
@@ -558,7 +558,7 @@ public class AbstractCharSequenceCheckTest
 		 * Проверка метода {@link AbstractCharSequenceCheck#notLessLength(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notLessLengthInvalid()
+		public void notLessLengthWithValueInvalid()
 		{
 			StringBuilder object = new StringBuilder(
 				"Без десяти"

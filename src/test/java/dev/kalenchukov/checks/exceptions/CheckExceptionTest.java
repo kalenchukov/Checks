@@ -39,10 +39,10 @@ public class CheckExceptionTest
 	public class GetCulprit
 	{
 		/**
-		 * Проверка метода {@link CheckException#getCulprit()} с корректным значением.
+		 * Проверка метода {@link CheckException#getCulprit()}.
 		 */
 		@Test
-		public void getCulpritValid()
+		public void getCulprit()
 		{
 			String object = "Доброе утро, последний герой...";
 			CheckException checkException = new CheckException(object);
@@ -62,10 +62,10 @@ public class CheckExceptionTest
 	public class GetMessage
 	{
 		/**
-		 * Проверка метода {@link CheckException#getMessage()} с корректным значением.
+		 * Проверка метода {@link CheckException#getMessage()}.
 		 */
 		@Test
-		public void getMessageValid()
+		public void getMessage()
 		{
 			String object = "Доброе утро, последний герой...";
 			String message = "Перемен, требуют наши сердца...";

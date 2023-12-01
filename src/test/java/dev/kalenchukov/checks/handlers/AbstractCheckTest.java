@@ -46,10 +46,10 @@ public class AbstractCheckTest
 	public class NotNull
 	{
 		/**
-		 * Проверка метода {@link AbstractCheck#notNull()} с корректным значением.
+		 * Проверка метода {@link AbstractCheck#notNull()}.
 		 */
 		@Test
-		public void notNullValid()
+		public void notNull()
 		{
 			Object object = new Object();
 			ObjectCheck<Object> objectCheck = new ObjectCheck<>(object);
@@ -63,7 +63,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#notNull()} с некорректным значением.
 		 */
 		@Test
-		public void notNullInvalid()
+		public void notNullWithValueInvalid()
 		{
 			Object object = null;
 			ObjectCheck<Object> objectCheck = new ObjectCheck<>(object);
@@ -82,10 +82,10 @@ public class AbstractCheckTest
 	public class NotNullWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCheck#notNull(String)} с корректным значением.
+		 * Проверка метода {@link AbstractCheck#notNull(String)}.
 		 */
 		@Test
-		public void notNullValid()
+		public void notNull()
 		{
 			Object object = new Object();
 			String message = "Ты идёшь в магазин, чтобы купить вино...";
@@ -100,7 +100,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#notNull(String)} с некорректным значением.
 		 */
 		@Test
-		public void notNullInvalid()
+		public void notNullWithValueInvalid()
 		{
 			Object object = null;
 			String message = "Я искал здесь вино, а нашёл третий глаз...";
@@ -121,10 +121,10 @@ public class AbstractCheckTest
 	public class NotEquals
 	{
 		/**
-		 * Проверка метода {@link AbstractCheck#notEquals(Object)} с корректным значением.
+		 * Проверка метода {@link AbstractCheck#notEquals(Object)}.
 		 */
 		@Test
-		public void notEqualsValid()
+		public void notEquals()
 		{
 			File object1 = new File("/dev/kalenchukov/README.MD");
 			File object2 = new File("/dev/kalenchukov/TODO.MD");
@@ -139,7 +139,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#notEquals(Object)} с некорректным значением.
 		 */
 		@Test
-		public void notEqualsInvalid()
+		public void notEqualsWithValueInvalid()
 		{
 			File object1 = new File("/dev/kalenchukov/README.MD");
 			File object2 = new File("/dev/kalenchukov/README.MD");
@@ -174,10 +174,10 @@ public class AbstractCheckTest
 	public class NotEqualsWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCheck#notEquals(Object, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCheck#notEquals(Object, String)}.
 		 */
 		@Test
-		public void notEqualsValid()
+		public void notEquals()
 		{
 			File object1 = new File("/dev/kalenchukov/README.MD");
 			File object2 = new File("/dev/kalenchukov/TODO.MD");
@@ -193,7 +193,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#notEquals(Object, String)} с некорректным значением.
 		 */
 		@Test
-		public void notEqualsInvalid()
+		public void notEqualsWithValueInvalid()
 		{
 			File object1 = new File("/dev/kalenchukov/README.MD");
 			File object2 = new File("/dev/kalenchukov/README.MD");
@@ -231,10 +231,10 @@ public class AbstractCheckTest
 	public class Not
 	{
 		/**
-		 * Проверка метода {@link AbstractCheck#not(Predicate)} с корректным значением.
+		 * Проверка метода {@link AbstractCheck#not(Predicate)}.
 		 */
 		@Test
-		public void notValid()
+		public void not()
 		{
 			String object = "Hello, world!";
 			Predicate<String> predicate = (value) -> (value.matches("[0-9]+"));
@@ -249,7 +249,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#not(Predicate)} с некорректным значением.
 		 */
 		@Test
-		public void notInvalid()
+		public void notWithValueInvalid()
 		{
 			String object = "123434576760";
 			Predicate<String> predicate = (value) -> (value.matches("[0-9]+"));
@@ -283,10 +283,10 @@ public class AbstractCheckTest
 	public class NotWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCheck#not(Predicate, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCheck#not(Predicate, String)}.
 		 */
 		@Test
-		public void notValid()
+		public void not()
 		{
 			String object = "Hello, world!";
 			Predicate<String> predicate = (value) -> (value.matches("[0-9]+"));
@@ -302,7 +302,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#not(Predicate, String)} с некорректным значением.
 		 */
 		@Test
-		public void notInvalid()
+		public void notWithValueInvalid()
 		{
 			String object = "123434576760";
 			Predicate<String> predicate = (value) -> (value.matches("[0-9]+"));
@@ -338,10 +338,10 @@ public class AbstractCheckTest
 	public class Get
 	{
 		/**
-		 * Проверка метода {@link AbstractCheck#get()} с корректным значением.
+		 * Проверка метода {@link AbstractCheck#get()}.
 		 */
 		@Test
-		public void getValid()
+		public void get()
 		{
 			Object object = new Object();
 			ObjectCheck<Object> objectCheck = new ObjectCheck<>(object);
@@ -352,7 +352,7 @@ public class AbstractCheckTest
 		}
 
 		/**
-		 * Проверка метода {@link AbstractCheck#get()} с корректным значением в виде {@code null}.
+		 * Проверка метода {@link AbstractCheck#get()} с значением в виде {@code null}.
 		 */
 		@Test
 		public void getWithNull()
@@ -378,7 +378,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#hashCode()} с равными объектами.
 		 */
 		@Test
-		public void hashCodeValid()
+		public void hashCodeWithEqualsValue()
 		{
 			IntegerCheck object1 = new IntegerCheck(1);
 			IntegerCheck object2 = new IntegerCheck(1);
@@ -408,7 +408,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#hashCode()} с разными объектами.
 		 */
 		@Test
-		public void hashCodeWithDifferentClass()
+		public void hashCodeWithDifferentTypeClass()
 		{
 			IntegerCheck object1 = new IntegerCheck(1);
 			StringCheck object2 = new StringCheck("1");
@@ -432,7 +432,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#equals(Object)} с равными объектами.
 		 */
 		@Test
-		public void equalsValid()
+		public void equalsWithEqualsValue()
 		{
 			IntegerCheck object1 = new IntegerCheck(1);
 			IntegerCheck object2 = new IntegerCheck(1);
@@ -474,7 +474,7 @@ public class AbstractCheckTest
 		 * Проверка метода {@link AbstractCheck#equals(Object)} с разными объектами.
 		 */
 		@Test
-		public void equalsWithDifferentClass()
+		public void equalsWithDifferentTypeClass()
 		{
 			IntegerCheck object1 = new IntegerCheck(1);
 			StringCheck object2 = new StringCheck("1");

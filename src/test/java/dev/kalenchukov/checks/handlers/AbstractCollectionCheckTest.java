@@ -46,10 +46,10 @@ public class AbstractCollectionCheckTest
 	public class NotEmpty
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notEmpty()} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notEmpty()}.
 		 */
 		@Test
-		public void notEmptyValid()
+		public void notEmpty()
 		{
 			Collection<String> object = List.of(
 				"Безъядерная зона"
@@ -65,7 +65,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notEmpty()} с некорректным значением.
 		 */
 		@Test
-		public void notEmptyInvalid()
+		public void notEmptyWithValueInvalid()
 		{
 			Collection<String> object = List.of();
 			CollectionCheck<String> collectionCheck = new CollectionCheck<>(object);
@@ -97,10 +97,10 @@ public class AbstractCollectionCheckTest
 	public class NotEmptyWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notEmpty(String)} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notEmpty(String)}.
 		 */
 		@Test
-		public void notEmptyValid()
+		public void notEmpty()
 		{
 			Collection<String> object = List.of(
 				"Безъядерная зона"
@@ -117,7 +117,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notEmpty(String)} с некорректным значением.
 		 */
 		@Test
-		public void notEmptyInvalid()
+		public void notEmptyWithValueInvalid()
 		{
 			Collection<String> object = List.of();
 			String message = "Я не вижу реки, я не вижу моста, ну и пусть...";
@@ -153,10 +153,10 @@ public class AbstractCollectionCheckTest
 	public class NotSize
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notSize(int)} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notSize(int)}.
 		 */
 		@Test
-		public void notSizeValid()
+		public void notSize()
 		{
 			Collection<String> object = List.of(
 				"Кукушка"
@@ -172,7 +172,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notSize(int)} с некорректным значением.
 		 */
 		@Test
-		public void notSizeInvalid()
+		public void notSizeWithValueInvalid()
 		{
 			Collection<String> object = List.of(
 				"Кукушка"
@@ -206,10 +206,10 @@ public class AbstractCollectionCheckTest
 	public class NotSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notSize(int, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notSize(int, String)}.
 		 */
 		@Test
-		public void notSizeValid()
+		public void notSize()
 		{
 			Collection<String> object = List.of(
 				"Кукушка"
@@ -226,7 +226,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notSize(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notSizeInvalid()
+		public void notSizeWithValueInvalid()
 		{
 			Collection<String> object = List.of(
 				"Белый день"
@@ -264,10 +264,10 @@ public class AbstractCollectionCheckTest
 	public class NotRangeSize
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notRangeSize(int, int)} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notRangeSize(int, int)}.
 		 */
 		@Test
-		public void notRangeSizeValid()
+		public void notRangeSize()
 		{
 			Collection<String> object = List.of(
 				"Бездельник"
@@ -283,7 +283,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notRangeSize(int, int)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeSizeInvalid()
+		public void notRangeSizeWithValueInvalid()
 		{
 			Collection<String> object = List.of(
 				"Бездельник"
@@ -317,10 +317,10 @@ public class AbstractCollectionCheckTest
 	public class NotRangeSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notRangeSize(int, int, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notRangeSize(int, int, String)}.
 		 */
 		@Test
-		public void notRangeSizeValid()
+		public void notRangeSize()
 		{
 			Collection<String> object = List.of(
 				"Бездельник"
@@ -337,7 +337,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notRangeSize(int, int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeSizeInvalid()
+		public void notRangeSizeWithValueInvalid()
 		{
 			Collection<String> object = List.of(
 				"Бездельник"
@@ -375,10 +375,10 @@ public class AbstractCollectionCheckTest
 	public class NotMoreSize
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notMoreSize(int)} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notMoreSize(int)}.
 		 */
 		@Test
-		public void notMoreSizeValid()
+		public void notMoreSize()
 		{
 			Collection<String> object = List.of(
 				"Бошетунмай"
@@ -394,7 +394,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notMoreSize(int)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreSizeInvalid()
+		public void notMoreSizeWithValueInvalid()
 		{
 			Collection<String> object = List.of(
 				"Бошетунмай",
@@ -429,10 +429,10 @@ public class AbstractCollectionCheckTest
 	public class NotMoreSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notMoreSize(int, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notMoreSize(int, String)}.
 		 */
 		@Test
-		public void notMoreSizeValid()
+		public void notMoreSize()
 		{
 			Collection<String> object = List.of(
 				"Дождь"
@@ -449,7 +449,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notMoreSize(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreSizeInvalid()
+		public void notMoreSizeWithValueInvalid()
 		{
 			Collection<String> object = List.of(
 				"Дождь",
@@ -488,10 +488,10 @@ public class AbstractCollectionCheckTest
 	public class NotLessSize
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notLessSize(int)} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notLessSize(int)}.
 		 */
 		@Test
-		public void notLessSizeValid()
+		public void notLessSize()
 		{
 			Collection<String> object = List.of(
 				"Дождь",
@@ -509,7 +509,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notLessSize(int)} с некорректным значением.
 		 */
 		@Test
-		public void notLessSizeInvalid()
+		public void notLessSizeWithValueInvalid()
 		{
 			Collection<String> object = List.of(
 				"Дождь",
@@ -545,10 +545,10 @@ public class AbstractCollectionCheckTest
 	public class NotLessSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractCollectionCheck#notLessSize(int, String)} с корректным значением.
+		 * Проверка метода {@link AbstractCollectionCheck#notLessSize(int, String)}.
 		 */
 		@Test
-		public void notLessSizeValid()
+		public void notLessSize()
 		{
 			Collection<String> object = List.of(
 				"Музыка волн",
@@ -567,7 +567,7 @@ public class AbstractCollectionCheckTest
 		 * Проверка метода {@link AbstractCollectionCheck#notLessSize(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notLessSizeInvalid()
+		public void notLessSizeWithValueInvalid()
 		{
 			Collection<String> object = List.of(
 				"Музыка волн",

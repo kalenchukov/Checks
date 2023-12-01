@@ -42,10 +42,10 @@ public class ArrayCheckTest
 	public class NotEmpty
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notEmpty()} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notEmpty()}.
 		 */
 		@Test
-		public void notEmptyValid()
+		public void notEmpty()
 		{
 			String[] object = {
 				"Я вчера слишком поздно лёг, сегодня рано встал..."
@@ -61,7 +61,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notEmpty()} с некорректным значением.
 		 */
 		@Test
-		public void notEmptyInvalid()
+		public void notEmptyWithValueInvalid()
 		{
 			String[] object = {};
 			ArrayCheck<String> arrayCheck = new ArrayCheck<>(object);
@@ -80,10 +80,10 @@ public class ArrayCheckTest
 	public class NotEmptyWithMessage
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notEmpty(String)} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notEmpty(String)}.
 		 */
 		@Test
-		public void notEmptyValid()
+		public void notEmpty()
 		{
 			String[] object = {
 				"Я вчера слишком поздно лёг, сегодня рано встал..."
@@ -100,7 +100,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notEmpty(String)} с некорректным значением.
 		 */
 		@Test
-		public void notEmptyInvalid()
+		public void notEmptyWithValueInvalid()
 		{
 			String[] object = {};
 			String message = "Электричка везёт меня туда, куда я не хочу...";
@@ -121,10 +121,10 @@ public class ArrayCheckTest
 	public class NotSize
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notSize(int)} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notSize(int)}.
 		 */
 		@Test
-		public void notSizeValid()
+		public void notSize()
 		{
 			String[] object = {
 				"Заголосуют тысячи рук..."
@@ -140,7 +140,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notSize(int)} с некорректным значением.
 		 */
 		@Test
-		public void notSizeInvalid()
+		public void notSizeWithValueInvalid()
 		{
 			String[] object = {
 				"Заголосуют тысячи рук..."
@@ -174,10 +174,10 @@ public class ArrayCheckTest
 	public class NotSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notSize(int, String)} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notSize(int, String)}.
 		 */
 		@Test
-		public void notSizeValid()
+		public void notSize()
 		{
 			String[] object = {
 				"Заголосуют тысячи рук..."
@@ -194,7 +194,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notSize(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notSizeInvalid()
+		public void notSizeWithValueInvalid()
 		{
 			String[] object = {
 				"Заголосуют тысячи рук..."
@@ -232,10 +232,10 @@ public class ArrayCheckTest
 	public class NotRangeSize
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notRangeSize(int, int)} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notRangeSize(int, int)}.
 		 */
 		@Test
-		public void notRangeSizeValid()
+		public void notRangeSize()
 		{
 			String[] object = {
 				"Это сладкое слово Камчатка..."
@@ -251,7 +251,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notRangeSize(int, int)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeSizeInvalid()
+		public void notRangeSizeWithValueInvalid()
 		{
 			String[] object = {
 				"Это сладкое слово Камчатка..."
@@ -285,10 +285,10 @@ public class ArrayCheckTest
 	public class NotRangeSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notRangeSize(int, int, String)} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notRangeSize(int, int, String)}.
 		 */
 		@Test
-		public void notRangeSizeValid()
+		public void notRangeSize()
 		{
 			String[] object = {
 				"Это сладкое слово Камчатка..."
@@ -305,7 +305,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notRangeSize(int, int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeSizeInvalid()
+		public void notRangeSizeWithValueInvalid()
 		{
 			String[] object = {
 				"Это сладкое слово Камчатка..."
@@ -343,10 +343,10 @@ public class ArrayCheckTest
 	public class NotMoreSize
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notMoreSize(int)} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notMoreSize(int)}.
 		 */
 		@Test
-		public void notMoreSizeValid()
+		public void notMoreSize()
 		{
 			String[] object = {
 				"Моё настроение зависит от количества выпитого пива...",
@@ -363,7 +363,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notMoreSize(int)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreSizeInvalid()
+		public void notMoreSizeWithValueInvalid()
 		{
 			String[] object = {
 				"Моё настроение зависит от количества выпитого пива...",
@@ -398,10 +398,10 @@ public class ArrayCheckTest
 	public class NotMoreSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notMoreSize(int, String)} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notMoreSize(int, String)}.
 		 */
 		@Test
-		public void notMoreSizeValid()
+		public void notMoreSize()
 		{
 			String[] object = {
 				"Моё настроение зависит от количества выпитого пива...",
@@ -419,7 +419,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notMoreSize(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreSizeInvalid()
+		public void notMoreSizeWithValueInvalid()
 		{
 			String[] object = {
 				"Моё настроение зависит от количества выпитого пива...",
@@ -461,10 +461,10 @@ public class ArrayCheckTest
 	public class NotLessSize
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notLessSize(int)} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notLessSize(int)}.
 		 */
 		@Test
-		public void notLessSizeValid()
+		public void notLessSize()
 		{
 			String[] object = {
 				"Тебя зовут туда, где пьют...",
@@ -481,7 +481,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notLessSize(int)} с некорректным значением.
 		 */
 		@Test
-		public void notLessSizeInvalid()
+		public void notLessSizeWithValueInvalid()
 		{
 			String[] object = {
 				"Тебя зовут туда, где пьют...",
@@ -516,10 +516,10 @@ public class ArrayCheckTest
 	public class NotLessSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link ArrayCheck#notLessSize(int, String)} с корректным значением.
+		 * Проверка метода {@link ArrayCheck#notLessSize(int, String)}.
 		 */
 		@Test
-		public void notLessSizeValid()
+		public void notLessSize()
 		{
 			String[] object = {
 				"Тебя зовут туда, где пьют...",
@@ -537,7 +537,7 @@ public class ArrayCheckTest
 		 * Проверка метода {@link ArrayCheck#notLessSize(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notLessSizeInvalid()
+		public void notLessSizeWithValueInvalid()
 		{
 			String[] object = {
 				"Тебя зовут туда, где пьют...",

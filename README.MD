@@ -416,9 +416,9 @@ import dev.kalenchukov.checks.Checks;
 
 String object = "Текст";
 Checks.require(object)
-    .notNull("Строка не должна быть null.")
-    .notEmpty("Строка не должна быть пуста.")
-    .notMoreLength(100, "Строка не должна быть больше 100 символов.");
+	.notNull("Строка не должна быть null.")
+	.notEmpty("Строка не должна быть пуста.")
+	.notMoreLength(100, "Строка не должна быть больше 100 символов.");
 ```
 
 #### Виновник исключения
@@ -432,10 +432,10 @@ String object = "Текст";
 
 try
 {
-    Checks.require(object).notMoreLength(1);
+	Checks.require(object).notMoreLength(1);
 }
 catch (MoreLengthObjectCheckException exception)
 {
-    exception.getCulprit();
+	exception.getCulprit();
 }
 ```

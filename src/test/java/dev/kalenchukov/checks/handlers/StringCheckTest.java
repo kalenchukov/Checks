@@ -41,10 +41,10 @@ public class StringCheckTest
 	public class NotBlank
 	{
 		/**
-		 * Проверка метода {@link StringCheck#notBlank()} с корректным значением.
+		 * Проверка метода {@link StringCheck#notBlank()}.
 		 */
 		@Test
-		public void notBlankValid()
+		public void notBlank()
 		{
 			String object = "Красно-жёлтые дни";
 			StringCheck stringCheck = new StringCheck(object);
@@ -58,7 +58,7 @@ public class StringCheckTest
 		 * Проверка метода {@link StringCheck#notBlank()} с некорректным значением.
 		 */
 		@Test
-		public void notBlankInvalid()
+		public void notBlankWithValueInvalid()
 		{
 			String object = "\t";
 			StringCheck stringCheck = new StringCheck(object);
@@ -90,10 +90,10 @@ public class StringCheckTest
 	public class NotBlankWithMessage
 	{
 		/**
-		 * Проверка метода {@link StringCheck#notBlank(String)} с корректным значением.
+		 * Проверка метода {@link StringCheck#notBlank(String)}.
 		 */
 		@Test
-		public void notBlankValid()
+		public void notBlank()
 		{
 			String object = "Красно-жёлтые дни";
 			String message = "...Завтра скажут - прощай навсегда. Заалеет сердечная рана...";
@@ -108,7 +108,7 @@ public class StringCheckTest
 		 * Проверка метода {@link StringCheck#notBlank(String)} с некорректным значением.
 		 */
 		@Test
-		public void notBlankInvalid()
+		public void notBlankWithValueInvalid()
 		{
 			String object = " ";
 			String message = "...Завтра скажут - прощай навсегда. Заалеет сердечная рана...";

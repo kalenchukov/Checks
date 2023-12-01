@@ -40,10 +40,10 @@ public class AbstractNumberCheckTest
 	public class NotZero
 	{
 		/**
-		 * Проверка метода {@link AbstractNumberCheck#notZero()} с корректным значением.
+		 * Проверка метода {@link AbstractNumberCheck#notZero()}.
 		 */
 		@Test
-		public void notZeroValid()
+		public void notZero()
 		{
 			Integer object = 17;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -57,7 +57,7 @@ public class AbstractNumberCheckTest
 		 * Проверка метода {@link AbstractNumberCheck#notZero()} с некорректным значением.
 		 */
 		@Test
-		public void notZeroInvalid()
+		public void notZeroWithValueInvalid()
 		{
 			Integer object = 0;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -89,10 +89,10 @@ public class AbstractNumberCheckTest
 	public class NotZeroWithMessage
 	{
 		/**
-		 * Проверка метода {@link AbstractNumberCheck#notZero(String)} с корректным значением.
+		 * Проверка метода {@link AbstractNumberCheck#notZero(String)}.
 		 */
 		@Test
-		public void notZeroValid()
+		public void notZero()
 		{
 			Integer object = 17;
 			String message = "В толпе я, как иголка в сене";
@@ -107,7 +107,7 @@ public class AbstractNumberCheckTest
 		 * Проверка метода {@link AbstractNumberCheck#notZero(String)} с некорректным значением.
 		 */
 		@Test
-		public void notZeroInvalid()
+		public void notZeroWithValueInvalid()
 		{
 			Integer object = 0;
 			String message = "В толпе я, как иголка в сене";

@@ -41,10 +41,10 @@ public class IntegerCheckTest
 	public class NotNegative
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notNegative()} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notNegative()}.
 		 */
 		@Test
-		public void notNegativeValid()
+		public void notNegative()
 		{
 			Integer object = 5745;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -58,7 +58,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notNegative()} с некорректным значением.
 		 */
 		@Test
-		public void notNegativeInvalid()
+		public void notNegativeWithValueInvalid()
 		{
 			Integer object = -9754;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -90,10 +90,10 @@ public class IntegerCheckTest
 	public class NotNegativeWithMessage
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notNegative(String)} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notNegative(String)}.
 		 */
 		@Test
-		public void notNegativeValid()
+		public void notNegative()
 		{
 			Integer object = 5745;
 			String message = "Времена меняются";
@@ -108,7 +108,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notNegative(String)} с некорректным значением.
 		 */
 		@Test
-		public void notNegativeInvalid()
+		public void notNegativeWithValueInvalid()
 		{
 			Integer object = -9754;
 			String message = "Времена меняются";
@@ -144,10 +144,10 @@ public class IntegerCheckTest
 	public class NotPositive
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notPositive()} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notPositive()}.
 		 */
 		@Test
-		public void notPositiveValid()
+		public void notPositive()
 		{
 			Integer object = -231;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -161,7 +161,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notPositive()} с некорректным значением.
 		 */
 		@Test
-		public void notPositiveInvalid()
+		public void notPositiveWithValueInvalid()
 		{
 			Integer object = 3455;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -193,10 +193,10 @@ public class IntegerCheckTest
 	public class NotPositiveWithMessage
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notPositive(String)} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notPositive(String)}.
 		 */
 		@Test
-		public void notPositiveValid()
+		public void notPositive()
 		{
 			Integer object = -231;
 			String message = "И пойдём мы под постушью свирель, дружным стадом, на бойню...";
@@ -211,7 +211,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notPositive(String)} с некорректным значением.
 		 */
 		@Test
-		public void notPositiveInvalid()
+		public void notPositiveWithValueInvalid()
 		{
 			Integer object = 3455;
 			String message = "И пойдём мы под постушью свирель, дружным стадом, на бойню...";
@@ -247,10 +247,10 @@ public class IntegerCheckTest
 	public class NotMoreNumber
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notMoreNumber(Integer)} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notMoreNumber(Integer)}.
 		 */
 		@Test
-		public void notMoreNumberValid()
+		public void notMoreNumber()
 		{
 			Integer object = 97;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -264,7 +264,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notMoreNumber(Integer)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreNumberInvalid()
+		public void notMoreNumberWithValueInvalid()
 		{
 			Integer object = 101;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -296,10 +296,10 @@ public class IntegerCheckTest
 	public class NotMoreNumberWithMessage
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notMoreNumber(Integer, String)} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notMoreNumber(Integer, String)}.
 		 */
 		@Test
-		public void notMoreNumberValid()
+		public void notMoreNumber()
 		{
 			Integer object = 97;
 			String message = "Так смотри не промахнись, Атаман, чтоб не дрогнула рука невзначай...";
@@ -314,7 +314,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notMoreNumber(Integer, String)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreNumberInvalid()
+		public void notMoreNumberWithValueInvalid()
 		{
 			Integer object = 101;
 			String message = "Так смотри не промахнись, Атаман, чтоб не дрогнула рука невзначай...";
@@ -350,10 +350,10 @@ public class IntegerCheckTest
 	public class NotLessNumber
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notLessNumber(Integer)} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notLessNumber(Integer)}.
 		 */
 		@Test
-		public void notLessNumberValid()
+		public void notLessNumber()
 		{
 			Integer object = 117;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -367,7 +367,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notLessNumber(Integer)} с некорректным значением.
 		 */
 		@Test
-		public void notLessNumberInvalid()
+		public void notLessNumberWithValueInvalid()
 		{
 			Integer object = 74;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -399,10 +399,10 @@ public class IntegerCheckTest
 	public class NotLessNumberWithMessage
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notLessNumber(Integer, String)} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notLessNumber(Integer, String)}.
 		 */
 		@Test
-		public void notLessNumberValid()
+		public void notLessNumber()
 		{
 			Integer object = 117;
 			String message = "Наши реки бедны водой...";
@@ -417,7 +417,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notLessNumber(Integer, String)} с некорректным значением.
 		 */
 		@Test
-		public void notLessNumberInvalid()
+		public void notLessNumberWithValueInvalid()
 		{
 			Integer object = 74;
 			String message = "Наши реки бедны водой...";
@@ -453,10 +453,10 @@ public class IntegerCheckTest
 	public class NotRangeNumber
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notRangeNumber(Integer, Integer)} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notRangeNumber(Integer, Integer)}.
 		 */
 		@Test
-		public void notRangeNumberValid()
+		public void notRangeNumber()
 		{
 			Integer object = 6712;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -470,7 +470,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notRangeNumber(Integer, Integer)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeNumberInvalid()
+		public void notRangeNumberWithValueInvalid()
 		{
 			Integer object = 746;
 			IntegerCheck integerCheck = new IntegerCheck(object);
@@ -502,10 +502,10 @@ public class IntegerCheckTest
 	public class NotRangeNumberWithMessage
 	{
 		/**
-		 * Проверка метода {@link IntegerCheck#notRangeNumber(Integer, Integer, String)} с корректным значением.
+		 * Проверка метода {@link IntegerCheck#notRangeNumber(Integer, Integer, String)}.
 		 */
 		@Test
-		public void notRangeNumberValid()
+		public void notRangeNumber()
 		{
 			Integer object = 1756;
 			String message = "Здесь не понятно, где лицо, а где рыло...";
@@ -520,7 +520,7 @@ public class IntegerCheckTest
 		 * Проверка метода {@link IntegerCheck#notRangeNumber(Integer, Integer, String)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeNumberInvalid()
+		public void notRangeNumberWithValueInvalid()
 		{
 			Integer object = 432;
 			String message = "Здесь не понятно, где лицо, а где рыло...";

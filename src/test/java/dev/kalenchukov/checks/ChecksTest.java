@@ -51,10 +51,10 @@ public class ChecksTest
 		public class RequireWithInteger
 		{
 			/**
-			 * Проверка метода {@link Checks#require(Integer)} с корректным значением.
+			 * Проверка метода {@link Checks#require(Integer)}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				Integer object = 1;
 				IntegerCheck expected = new IntegerCheck(object);
@@ -65,7 +65,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Integer)} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(Integer)} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()
@@ -88,10 +88,10 @@ public class ChecksTest
 		public class RequireWithString
 		{
 			/**
-			 * Проверка метода {@link Checks#require(String)} с корректным значением.
+			 * Проверка метода {@link Checks#require(String)}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				String object = "Когда твоя девушка больна";
 				StringCheck expected = new StringCheck(object);
@@ -102,7 +102,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(String)} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(String)} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()
@@ -125,10 +125,10 @@ public class ChecksTest
 		public class RequireWithStringBuilder
 		{
 			/**
-			 * Проверка метода {@link Checks#require(StringBuilder)} с корректным значением.
+			 * Проверка метода {@link Checks#require(StringBuilder)}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				StringBuilder object = new StringBuilder("Когда твоя девушка больна");
 				StringBuilderCheck expected = new StringBuilderCheck(object);
@@ -139,7 +139,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(StringBuilder)} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(StringBuilder)} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()
@@ -162,10 +162,10 @@ public class ChecksTest
 		public class RequireWithCharSequence
 		{
 			/**
-			 * Проверка метода {@link Checks#require(CharSequence)} с корректным значением.
+			 * Проверка метода {@link Checks#require(CharSequence)}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				CharSequence object = "Когда твоя девушка больна";
 				CharSequenceCheck expected = new CharSequenceCheck(object);
@@ -176,7 +176,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(CharSequence)} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(CharSequence)} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()
@@ -199,10 +199,10 @@ public class ChecksTest
 		public class RequireWithList
 		{
 			/**
-			 * Проверка метода {@link Checks#require(List)} с корректным значением.
+			 * Проверка метода {@link Checks#require(List)}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				List<String> object = List.of("Весна", "Сосны на морском берегу");
 				ListCheck<String> expected = new ListCheck<>(object);
@@ -213,7 +213,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(List)} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(List)} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()
@@ -227,7 +227,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(List)} с корректным значением содержащим {@code null}.
+			 * Проверка метода {@link Checks#require(List)} со значением содержащим {@code null}.
 			 */
 			@Test
 			public void checkWithValueNull()
@@ -252,10 +252,10 @@ public class ChecksTest
 		public class RequireWithSet
 		{
 			/**
-			 * Проверка метода {@link Checks#require(Set)} с корректным значением.
+			 * Проверка метода {@link Checks#require(Set)}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				Set<Integer> object = Set.of(13, 11);
 				SetCheck<Integer> expected = new SetCheck<>(object);
@@ -266,7 +266,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Set)} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(Set)} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()
@@ -280,7 +280,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Set)} с корректным значением содержащим {@code null}.
+			 * Проверка метода {@link Checks#require(Set)} со значением содержащим {@code null}.
 			 */
 			@Test
 			public void checkWithValueNull()
@@ -305,10 +305,10 @@ public class ChecksTest
 		public class RequireWithCollection
 		{
 			/**
-			 * Проверка метода {@link Checks#require(Collection)} с корректным значением.
+			 * Проверка метода {@link Checks#require(Collection)}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				Collection<String> object = List.of("Бездельник", "Муравейник");
 				CollectionCheck<String> expected = new CollectionCheck<>(object);
@@ -319,7 +319,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Collection)} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(Collection)} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()
@@ -333,7 +333,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Collection)} с корректным значением содержащим {@code null}.
+			 * Проверка метода {@link Checks#require(Collection)} со значением содержащим {@code null}.
 			 */
 			@Test
 			public void checkWithValueNull()
@@ -358,10 +358,10 @@ public class ChecksTest
 		public class RequireWithMap
 		{
 			/**
-			 * Проверка метода {@link Checks#require(Map)} с корректным значением.
+			 * Проверка метода {@link Checks#require(Map)}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				Map<Integer, String> object = new HashMap<>();
 				MapCheck<Integer, String> expected = new MapCheck<>(object);
@@ -372,7 +372,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Map)} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(Map)} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()
@@ -386,7 +386,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Map)} с корректным значением содержащим {@code null}.
+			 * Проверка метода {@link Checks#require(Map)} со значением содержащим {@code null}.
 			 */
 			@Test
 			public void checkWithValueNull()
@@ -411,10 +411,10 @@ public class ChecksTest
 		public class RequireWithArray
 		{
 			/**
-			 * Проверка метода {@link Checks#require(Object[])} с корректным значением.
+			 * Проверка метода {@link Checks#require(Object[])}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				Integer[] object = new Integer[]{1, 2};
 				ArrayCheck<Integer> expected = new ArrayCheck<>(object);
@@ -425,7 +425,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Object[])} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(Object[])} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()
@@ -439,7 +439,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Object[])} с корректным значением содержащим {@code null}.
+			 * Проверка метода {@link Checks#require(Object[])} со значением содержащим {@code null}.
 			 */
 			@Test
 			public void checkWithValueNull()
@@ -462,10 +462,10 @@ public class ChecksTest
 		public class RequireWithObject
 		{
 			/**
-			 * Проверка метода {@link Checks#require(Object)} с корректным значением.
+			 * Проверка метода {@link Checks#require(Object)}.
 			 */
 			@Test
-			public void checkValid()
+			public void check()
 			{
 				Object object = new Object();
 				ObjectCheck<Object> expected = new ObjectCheck<>(object);
@@ -476,7 +476,7 @@ public class ChecksTest
 			}
 
 			/**
-			 * Проверка метода {@link Checks#require(Object)} с корректным значением в виде {@code null}.
+			 * Проверка метода {@link Checks#require(Object)} с значением в виде {@code null}.
 			 */
 			@Test
 			public void checkWithNull()

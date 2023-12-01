@@ -44,10 +44,10 @@ public class MapCheckTest
 	public class NotEmpty
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notEmpty()} с корректным значением.
+		 * Проверка метода {@link MapCheck#notEmpty()}.
 		 */
 		@Test
-		public void notEmptyValid()
+		public void notEmpty()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "Там за окном, сказка с несчастливым концом..."
@@ -63,7 +63,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notEmpty()} с некорректным значением.
 		 */
 		@Test
-		public void notEmptyInvalid()
+		public void notEmptyWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of();
 			MapCheck<Integer, String> mapCheck = new MapCheck<>(object);
@@ -95,10 +95,10 @@ public class MapCheckTest
 	public class NotEmptyWithMessage
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notEmpty(String)} с корректным значением.
+		 * Проверка метода {@link MapCheck#notEmpty(String)}.
 		 */
 		@Test
-		public void notEmptyValid()
+		public void notEmpty()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "Там за окном, сказка с несчастливым концом..."
@@ -115,7 +115,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notEmpty(String)} с некорректным значением.
 		 */
 		@Test
-		public void notEmptyInvalid()
+		public void notEmptyWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of();
 			String message = "А один из них как-нибудь утром придумает порох...";
@@ -151,10 +151,10 @@ public class MapCheckTest
 	public class NotSize
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notSize(int)} с корректным значением.
+		 * Проверка метода {@link MapCheck#notSize(int)}.
 		 */
 		@Test
-		public void notSizeValid()
+		public void notSize()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "У меня есть вопрос, на который ты не дашь мне ответ..."
@@ -170,7 +170,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notSize(int)} с некорректным значением.
 		 */
 		@Test
-		public void notSizeInvalid()
+		public void notSizeWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "У меня есть вопрос, на который ты не дашь мне ответ..."
@@ -204,10 +204,10 @@ public class MapCheckTest
 	public class NotSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notSize(int, String)} с корректным значением.
+		 * Проверка метода {@link MapCheck#notSize(int, String)}.
 		 */
 		@Test
-		public void notSizeValid()
+		public void notSize()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "У меня есть вопрос, на который ты не дашь мне ответ..."
@@ -224,7 +224,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notSize(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notSizeInvalid()
+		public void notSizeWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "У меня есть вопрос, на который ты не дашь мне ответ..."
@@ -262,10 +262,10 @@ public class MapCheckTest
 	public class NotRangeSize
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notRangeSize(int, int)} с корректным значением.
+		 * Проверка метода {@link MapCheck#notRangeSize(int, int)}.
 		 */
 		@Test
-		public void notRangeSizeValid()
+		public void notRangeSize()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "А потом будет лето, неизвестно зачем..."
@@ -281,7 +281,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notRangeSize(int, int)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeSizeInvalid()
+		public void notRangeSizeWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "А потом будет лето, неизвестно зачем..."
@@ -315,10 +315,10 @@ public class MapCheckTest
 	public class NotRangeSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notRangeSize(int, int, String)} с корректным значением.
+		 * Проверка метода {@link MapCheck#notRangeSize(int, int, String)}.
 		 */
 		@Test
-		public void notRangeSizeValid()
+		public void notRangeSize()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "А потом будет лето, неизвестно зачем..."
@@ -335,7 +335,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notRangeSize(int, int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notRangeSizeInvalid()
+		public void notRangeSizeWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "А потом будет лето, неизвестно зачем..."
@@ -373,10 +373,10 @@ public class MapCheckTest
 	public class NotMoreSize
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notMoreSize(int)} с корректным значением.
+		 * Проверка метода {@link MapCheck#notMoreSize(int)}.
 		 */
 		@Test
-		public void notMoreSizeValid()
+		public void notMoreSize()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "Ты хотел быть один, но не смог быть один..."
@@ -392,7 +392,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notMoreSize(int)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreSizeInvalid()
+		public void notMoreSizeWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "А потом будет лето, неизвестно зачем...",
@@ -427,10 +427,10 @@ public class MapCheckTest
 	public class NotMoreSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notMoreSize(int, String)} с корректным значением.
+		 * Проверка метода {@link MapCheck#notMoreSize(int, String)}.
 		 */
 		@Test
-		public void notMoreSizeValid()
+		public void notMoreSize()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "Ты хотел быть один, но не смог быть один..."
@@ -447,7 +447,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notMoreSize(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notMoreSizeInvalid()
+		public void notMoreSizeWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "А потом будет лето, неизвестно зачем...",
@@ -486,10 +486,10 @@ public class MapCheckTest
 	public class NotLessSize
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notLessSize(int)} с корректным значением.
+		 * Проверка метода {@link MapCheck#notLessSize(int)}.
 		 */
 		@Test
-		public void notLessSizeValid()
+		public void notLessSize()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "Если есть стадо, значит есть постух..."
@@ -505,7 +505,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notLessSize(int)} с некорректным значением.
 		 */
 		@Test
-		public void notLessSizeInvalid()
+		public void notLessSizeWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "Если есть стадо, значит есть постух..."
@@ -539,10 +539,10 @@ public class MapCheckTest
 	public class NotLessSizeWithMessage
 	{
 		/**
-		 * Проверка метода {@link MapCheck#notLessSize(int, String)} с корректным значением.
+		 * Проверка метода {@link MapCheck#notLessSize(int, String)}.
 		 */
 		@Test
-		public void notLessSizeValid()
+		public void notLessSize()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "Если есть стадо, значит есть постух..."
@@ -559,7 +559,7 @@ public class MapCheckTest
 		 * Проверка метода {@link MapCheck#notLessSize(int, String)} с некорректным значением.
 		 */
 		@Test
-		public void notLessSizeInvalid()
+		public void notLessSizeWithValueInvalid()
 		{
 			Map<Integer, String> object = Map.of(
 				1, "Если есть стадо, значит есть постух..."
